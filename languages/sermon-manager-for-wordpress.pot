@@ -1,0 +1,537 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/sermon-manager-for-wordpress\n"
+"POT-Creation-Date: 2012-03-01 21:38:21+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/shortcodes.php:102 sermons.php:719 sermons.php:766
+msgid "Permalink to %s"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:247
+msgid "Delete this image"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:247
+#: includes/tax-meta-class/Tax-meta-class.php:852
+msgid "Delete"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:341
+msgid "Cannot delete file. Something's wrong."
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:556
+#: includes/tax-meta-class/Tax-meta-class.php:599
+msgid "Remove"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:569
+msgid "Add"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:848
+msgid "Uploaded files"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:859
+msgid "Upload new files"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:865
+msgid "Add more files"
+msgstr ""
+
+#: includes/tax-meta-class/Tax-meta-class.php:917
+msgid "Select a color"
+msgstr ""
+
+#: includes/taxonomy-images.php:36
+msgid "Photo"
+msgstr ""
+
+#: includes/taxonomy-images.php:63
+msgid "Series Graphic"
+msgstr ""
+
+#: includes/taxonomy-images.php:94
+msgid "Image"
+msgstr ""
+
+#: options.php:62
+msgid "Sermon Manager Options"
+msgstr ""
+
+#: options.php:69
+msgid "Need Help?"
+msgstr ""
+
+#: options.php:71
+msgid ""
+"If you need help, please visit <a href=\"http://www.wpforchurch.com/\" "
+"target=\"_blank\">WP for Church</a>"
+msgstr ""
+
+#: options.php:84
+msgid "Archive Page Settings"
+msgstr ""
+
+#: options.php:88
+msgid "Archive Page Title"
+msgstr ""
+
+#: options.php:95
+msgid "Archive Page Slug"
+msgstr ""
+
+#: options.php:97
+msgid "Go to Settings => Permalinks and re-save after changing this!"
+msgstr ""
+
+#: options.php:105
+msgid "Verse Settings"
+msgstr ""
+
+#: options.php:110
+msgid "Verse Popups"
+msgstr ""
+
+#: options.php:113
+msgid "Disable Bib.ly verse popups"
+msgstr ""
+
+#: options.php:118
+msgid "Select Bible Version for Verse Popups"
+msgstr ""
+
+#: options.php:126
+msgid "ESV, NET, KJV, or LEB are the currently supported popups."
+msgstr ""
+
+#: options.php:133
+msgid "Save Changes"
+msgstr ""
+
+#: options.php:156
+msgid "Settings"
+msgstr ""
+
+#: sermons.php:33
+msgid "Sermons"
+msgstr ""
+
+#: sermons.php:34 sermons.php:560
+msgid "Sermon"
+msgstr ""
+
+#: sermons.php:35
+msgid "Add New"
+msgstr ""
+
+#: sermons.php:36
+msgid "Add New Sermon"
+msgstr ""
+
+#: sermons.php:37
+msgid "Edit Sermon"
+msgstr ""
+
+#: sermons.php:38
+msgid "New Sermon"
+msgstr ""
+
+#: sermons.php:39
+msgid "View Sermon"
+msgstr ""
+
+#: sermons.php:40
+msgid "Search Sermons"
+msgstr ""
+
+#: sermons.php:41
+msgid "No sermons found"
+msgstr ""
+
+#: sermons.php:42
+msgid "No sermons found in Trash"
+msgstr ""
+
+#: sermons.php:78 sermons.php:80
+msgid "Preachers"
+msgstr ""
+
+#: sermons.php:79 sermons.php:404
+msgid "Preacher"
+msgstr ""
+
+#: sermons.php:81
+msgid "Search preachers"
+msgstr ""
+
+#: sermons.php:82
+msgid "Most frequent preachers"
+msgstr ""
+
+#: sermons.php:83
+msgid "All preachers"
+msgstr ""
+
+#: sermons.php:84
+msgid "Edit preachers"
+msgstr ""
+
+#: sermons.php:85
+msgid "Update preachers"
+msgstr ""
+
+#: sermons.php:86
+msgid "Add new preacher"
+msgstr ""
+
+#: sermons.php:87
+msgid "New preacher name"
+msgstr ""
+
+#: sermons.php:88
+msgid "Separate multiple preachers with commas"
+msgstr ""
+
+#: sermons.php:89
+msgid "Add or remove preachers"
+msgstr ""
+
+#: sermons.php:90
+msgid "Choose from most frequent preachers"
+msgstr ""
+
+#: sermons.php:104 sermons.php:106 sermons.php:107 sermons.php:405
+msgid "Sermon Series"
+msgstr ""
+
+#: sermons.php:108
+msgid "Search sermon series"
+msgstr ""
+
+#: sermons.php:109
+msgid "Most frequent sermon series"
+msgstr ""
+
+#: sermons.php:110
+msgid "All sermon series"
+msgstr ""
+
+#: sermons.php:111
+msgid "Edit sermon series"
+msgstr ""
+
+#: sermons.php:112
+msgid "Update sermon series"
+msgstr ""
+
+#: sermons.php:113
+msgid "Add new sermon series"
+msgstr ""
+
+#: sermons.php:114
+msgid "New sermon series name"
+msgstr ""
+
+#: sermons.php:115
+msgid "Separate sermon series with commas"
+msgstr ""
+
+#: sermons.php:116
+msgid "Add or remove sermon series"
+msgstr ""
+
+#: sermons.php:117
+msgid "Choose from most used sermon series"
+msgstr ""
+
+#: sermons.php:131 sermons.php:132 sermons.php:133
+msgid "Sermon Topics"
+msgstr ""
+
+#: sermons.php:134
+msgid "Search sermon topics"
+msgstr ""
+
+#: sermons.php:135
+msgid "Most popular sermon topics"
+msgstr ""
+
+#: sermons.php:136
+msgid "All sermon topics"
+msgstr ""
+
+#: sermons.php:137
+msgid "Edit sermon topic"
+msgstr ""
+
+#: sermons.php:138
+msgid "Update sermon topic"
+msgstr ""
+
+#: sermons.php:139
+msgid "Add new sermon topic"
+msgstr ""
+
+#: sermons.php:140
+msgid "New sermon topic"
+msgstr ""
+
+#: sermons.php:141
+msgid "Separate sermon topics with commas"
+msgstr ""
+
+#: sermons.php:142
+msgid "Add or remove sermon topics"
+msgstr ""
+
+#: sermons.php:143
+msgid "Choose from most used sermon topics"
+msgstr ""
+
+#: sermons.php:164
+msgid "Sermon updated. <a href=\"%s\">View sermon</a>"
+msgstr ""
+
+#: sermons.php:165
+msgid "Custom field updated."
+msgstr ""
+
+#: sermons.php:166
+msgid "Custom field deleted."
+msgstr ""
+
+#: sermons.php:167
+msgid "Sermon updated."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+#: sermons.php:169
+msgid "Sermon restored to revision from %s"
+msgstr ""
+
+#: sermons.php:170
+msgid "Sermon published. <a href=\"%s\">View sermon</a>"
+msgstr ""
+
+#: sermons.php:171
+msgid "Sermon saved."
+msgstr ""
+
+#: sermons.php:172
+msgid "Sermon submitted. <a target=\"_blank\" href=\"%s\">Preview sermon</a>"
+msgstr ""
+
+#: sermons.php:173
+msgid ""
+"Sermon scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview sermon</a>"
+msgstr ""
+
+#. translators: Publish box date format, see http:php.net/date
+#: sermons.php:175
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: sermons.php:176
+msgid ""
+"Sermon draft updated. <a target=\"_blank\" href=\"%s\">Preview sermon</a>"
+msgstr ""
+
+#: sermons.php:190
+msgid "Things to remember when adding or editing a sermon:"
+msgstr ""
+
+#: sermons.php:192
+msgid ""
+"Specify a sermon series if appropriate. This will help your site visitors "
+"while browsing sermons."
+msgstr ""
+
+#: sermons.php:193
+msgid "Specify the correct preacher of the sermon."
+msgstr ""
+
+#: sermons.php:195
+msgid "If you want to schedule the sermon to be published in the future:"
+msgstr ""
+
+#: sermons.php:197
+msgid "Under the Publish meta box, click on the Edit link next to Publish."
+msgstr ""
+
+#: sermons.php:198
+msgid ""
+"Change the date to the date to actual publish this article, then click on Ok."
+msgstr ""
+
+#: sermons.php:200
+msgid "For more help:"
+msgstr ""
+
+#: sermons.php:201
+msgid ""
+"<a href=\"http://wpforchurch.com/\" target=\"_blank\">Wordpress for Church</"
+"a>"
+msgstr ""
+
+#: sermons.php:204
+msgid "This is the help screen displaying on the sermons page."
+msgstr ""
+
+#: sermons.php:283
+msgid "Sermon Details"
+msgstr ""
+
+#: sermons.php:284
+msgid "Sermon Files"
+msgstr ""
+
+#: sermons.php:300
+msgid "Date:"
+msgstr ""
+
+#: sermons.php:310
+msgid "Service Type:"
+msgstr ""
+
+#: sermons.php:312
+msgid "Adult Bible Class"
+msgstr ""
+
+#: sermons.php:313
+msgid "Sunday AM"
+msgstr ""
+
+#: sermons.php:314
+msgid "Sunday PM"
+msgstr ""
+
+#: sermons.php:315
+msgid "Midweek Service"
+msgstr ""
+
+#: sermons.php:316
+msgid "Special Service"
+msgstr ""
+
+#: sermons.php:317
+msgid "Radio Broadcast"
+msgstr ""
+
+#: sermons.php:320
+msgid "Main Bible Passage:"
+msgstr ""
+
+#: sermons.php:329
+msgid "Sermon Description:"
+msgstr ""
+
+#: sermons.php:341
+msgid "Location of MP3 file:"
+msgstr ""
+
+#: sermons.php:343
+msgid "Paste your video embed code:"
+msgstr ""
+
+#: sermons.php:345
+msgid ""
+"If you would like to add pdf, doc, ppt, or other file types upload them "
+"here. They'll be listed at the bottom of the sermon page."
+msgstr ""
+
+#: sermons.php:346
+msgid "Upload Additional Files"
+msgstr ""
+
+#: sermons.php:357
+msgid "Currently Attached Files:"
+msgstr ""
+
+#: sermons.php:403
+msgid "Sermon Title"
+msgstr ""
+
+#: sermons.php:406
+msgid "Topics"
+msgstr ""
+
+#: sermons.php:407
+msgid "Views"
+msgstr ""
+
+#: sermons.php:592
+msgid "The most recent sermons on your site"
+msgstr ""
+
+#: sermons.php:593 sermons.php:615
+msgid "Recent Sermons"
+msgstr ""
+
+#: sermons.php:676
+msgid "Title:"
+msgstr ""
+
+#: sermons.php:679
+msgid "Number of sermons to show:"
+msgstr ""
+
+#: sermons.php:729
+msgid "<br/>Series: "
+msgstr ""
+
+#: sermons.php:742
+msgid "Sort by Preacher"
+msgstr ""
+
+#: sermons.php:749
+msgid "Sort by Series"
+msgstr ""
+
+#: sermons.php:825
+msgid "Leave a comment"
+msgstr ""
+
+#: sermons.php:825
+msgid "1 Comment"
+msgstr ""
+
+#: sermons.php:825
+msgid "% Comments"
+msgstr ""
+
+#: sermons.php:826
+msgid "Edit"
+msgstr ""
+
+#: sermons.php:838
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: sermons.php:839
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: views/taxonomy-wpfc_preacher.php:19
+msgid "Sermons by: %s"
+msgstr ""
+
+#: views/taxonomy-wpfc_sermon_series.php:19
+msgid "Sermon Series: %s"
+msgstr ""
+
+#: views/taxonomy-wpfc_sermon_topics.php:16
+msgid "Sermon Topic: %s"
+msgstr ""

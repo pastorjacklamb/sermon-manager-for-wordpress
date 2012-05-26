@@ -1,0 +1,85 @@
+/* Sermon Manager CSS http://www.wpforchurch.com/plugins/sermon-manager/ */
+/* TODO - add CSS for image styles */
+
+/*controls padding around jwplayer*/
+#mediaspace_wrapper {padding-bottom:15px;max-width:100%;}
+
+/*controls padding around video embeds*/
+div.wpfc_sermon-video {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	max-width: 100%;
+}
+
+#wpfc_sermon iframe, #wpfc_sermon object, #wpfc_sermon embed{max-width: 100%;}
+
+.wpfc_date {
+	text-transform: uppercase;
+	font-size:.7em;
+}
+
+/* Recent Sermon Widget */
+.widget_recent_sermons ul ul {
+	padding-left: 0px!important;
+}
+.widget_recent_sermons li {
+	padding-left: 18px!important;
+	background: url(icons/mic-icon.png) no-repeat left;
+	list-style: none!important;
+}
+.widget_recent_sermons span {
+	font-size:.75em;
+	font-color: #444444;
+}
+
+
+#sermon-navigation {padding-bottom: 15px;}
+
+/* WP Pagenavi Styles */
+.wp-pagenavi a, .wp-pagenavi span {
+	padding: 5px; margin-right: 10px;
+	font-size: 15px; text-decoration: none;
+	border: 3px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
+	}
+.wp-pagenavi a:hover, .wp-pagenavi span.current {
+	background: #AFAFAF;
+	color: #fff;
+	border: 3px solid #AFAFAF;
+	}
+.wp-pagenavi span.current { font-weight: bold; }
+
+/* Verse Popup Styles */
+.bibly_popup_outer{font-size:1.2em;}
+.bibly_popup_footer {display:none;}
+
+/*styles for additional files*/
+.single-wpfc_sermon a[href$='.ppt'], .single-wpfc_sermon a[href$='.pptx'] {
+	background:url(icons/ppt.png) no-repeat center left;
+	padding-left:20px;
+    height: 16px;
+	line-height: 16px;
+}
+.single-wpfc_sermon a[href$='.doc'], .single-wpfc_sermon a[href$='.rtf'], .single-wpfc_sermon a[href$='.docx']  {
+	background:url(icons/word.png) no-repeat center left;
+	padding-left:20px;
+    height: 16px;
+	line-height: 16px;
+}
+.single-wpfc_sermon a[href$='.pdf'] {
+	background:url(icons/pdf.png) no-repeat center left;
+	padding-left:20px;
+    height: 16px;
+	line-height: 16px;
+}
+.single-wpfc_sermon a[href$='.mp3'] {
+	background:url(icons/audio.png) no-repeat center left;
+	padding-left:20px;
+    height: 16px;
+	line-height: 16px;
+}
+.single-wpfc_sermon a[href$='.mp4'] {
+	background:url(icons/video.png) no-repeat center left;
+	padding-left:20px;
+    height: 16px;
+	line-height: 16px;
+}
