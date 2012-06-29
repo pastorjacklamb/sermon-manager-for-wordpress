@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://wpforchurch.com
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.3.2
+Version: 1.3.3
 Author: Jack Lamb
 Author URI: http://wpforchurch.com/
 License: GPL2
@@ -62,7 +62,6 @@ function create_wpfc_sermon_types()
     'has_archive' => 'sermons', 
     'rewrite' => array('slug' => $archive_slug),
     'hierarchical' => false,
-    'menu_position' => 25,
     'supports' => array('title','comments', 'thumbnail')
   ); 
   register_post_type('wpfc_sermon',$args);
@@ -765,13 +764,12 @@ function render_wpfc_sermon_single() {
 
 			<div class="entry-content">
 				<div id="wpfc_sermon">		  
-					<p>	<?php   
+					<p>	<?php 
 							if (get_post_meta($post->ID, 'bible_passage', true)) {
 								echo get_post_meta($post->ID, 'bible_passage', true); ?> |								
 						<?php } 
 							echo the_terms( $post->ID, 'wpfc_preacher', '', ', ', ' ' ); 
 							echo the_terms( $post->ID, 'wpfc_sermon_series', '<br />Series: ', ', ', '' ); 
-							echo setPostViews(the_ID());
 						?>
 					</p>
 					<?php if (get_post_meta($post->ID, 'sermon_video', true)) { ?>
@@ -798,7 +796,6 @@ function render_wpfc_sermon_single() {
 										'numberposts' => -1,
 										'post_status' => null,
 										'post_parent' => $post->ID,
-										'exclude'     => get_post_thumbnail_id()
 									);
 									$attachments = get_posts($args);
 									if ($attachments) {

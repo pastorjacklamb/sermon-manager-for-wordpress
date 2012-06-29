@@ -18,14 +18,18 @@ div.wpfc_sermon-video {
 	font-size:.7em;
 }
 
+#wpfc_sermon_sorting {
+	padding: 10px 0 10px;
+}
+
 /* Recent Sermon Widget */
-.widget_recent_sermons ul ul {
-	padding-left: 0px!important;
+.widget_recent_sermons ul {
+	margin-left: 0px!important;
 }
 .widget_recent_sermons li {
-	padding-left: 18px!important;
+	padding-left: 18px;
 	background: url(icons/mic-icon.png) no-repeat left;
-	list-style: none!important;
+	list-style: none;
 }
 .widget_recent_sermons span {
 	font-size:.75em;
