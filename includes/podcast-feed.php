@@ -64,7 +64,7 @@ $audio_duration = wpfc_mp3_duration( $audio_file );
 			<?php endif; ?>
 			<enclosure url="<?php echo esc_url( $audio_file ); ?>" length="<?php echo $audio_file_size; ?>" type="audio/mpeg" />
 			<guid><?php echo esc_url( get_post_meta( $post->ID, 'sermon_audio', true ) ) ?></guid>
-			<pubDate><?php wpfc_sermon_date('D, d M Y H:i:s T'); ?></pubDate>
+			<pubDate><?php wpfc_sermon_date('D, d M Y H:i:s O'); ?></pubDate>
 			<itunes:duration><?php echo esc_html( $audio_duration ); ?></itunes:duration>
 			<?php if ( $topic ) : ?>
 			<?php echo $topic . "\n" ?>
