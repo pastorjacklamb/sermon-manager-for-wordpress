@@ -40,17 +40,24 @@ div.wpfc_sermon-video {
 #sermon-navigation {padding-bottom: 15px;}
 
 /* WP Pagenavi Styles */
-.wp-pagenavi a, .wp-pagenavi span {
-	padding: 5px; margin-right: 10px;
-	font-size: 15px; text-decoration: none;
-	border: 3px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
-	}
-.wp-pagenavi a:hover, .wp-pagenavi span.current {
-	background: #AFAFAF;
-	color: #fff;
-	border: 3px solid #AFAFAF;
-	}
-.wp-pagenavi span.current { font-weight: bold; }
+.wp-pagenavi a,
+.wp-pagenavi .current,
+.wp-pagenavi .pages,{
+	display: block;
+	float: left;
+	width: auto;
+	height: 24px;
+	line-height: 24px;
+	margin: 0 5px 0 0;
+	padding: 0 8px;	
+	text-align: center;
+	text-decoration: none;
+}
+
+.wp-pagenavi .pages {
+	float: right;
+	margin: 0px;
+}
 
 /* Verse Popup Styles */
 .bibly_popup_outer{font-size:1.2em;}
