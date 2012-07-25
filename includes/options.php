@@ -21,6 +21,12 @@ function wpfc_add_defaults() {
 		);
 		update_option('wpfc_options', $arr);
 	}
+	$settings = get_option( 'taxonomy_image_plugin_settings' );
+	if ( false === $settings ) {
+		add_option( 'taxonomy_image_plugin_settings', array(
+			'taxonomies' => array('wpfc_sermon_series', 'wpfc_preacher', 'wpfc_sermon_topics')
+			) );
+	}
 }
 
 // Init plugin options to white list our options
@@ -333,6 +339,12 @@ function wpfc_sermon_options_render_form() {
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function wpfc_validate_options($input) {
 	 // strip html from textboxes
+	$settings = get_option( 'taxonomy_image_plugin_settings' );
+	if ( false === $settings ) {
+		add_option( 'taxonomy_image_plugin_settings', array(
+			'taxonomies' => array('wpfc_sermon_series', 'wpfc_preacher', 'wpfc_sermon_topics')
+			) );
+	}
 	$input['archive_slug'] =  wp_filter_nohtml_kses($input['archive_slug']); // Sanitize textbox input (strip html tags, and escape characters)
 	$input['archive_title'] =  wp_filter_nohtml_kses($input['archive_title']); // Sanitize textbox input (strip html tags, and escape characters)
 	return $input;
