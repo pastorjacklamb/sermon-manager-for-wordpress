@@ -21,12 +21,6 @@ function wpfc_add_defaults() {
 		);
 		update_option('wpfc_options', $arr);
 	}
-	$settings = get_option( 'taxonomy_image_plugin_settings' );
-	if ( false === $settings ) {
-		add_option( 'taxonomy_image_plugin_settings', array(
-			'taxonomies' => array('wpfc_sermon_series', 'wpfc_preacher', 'wpfc_sermon_topics')
-			) );
-	}
 }
 
 // Init plugin options to white list our options

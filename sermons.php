@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5 beta2
+Version: 1.5 beta3
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -17,6 +17,9 @@ function wpfc_sermon_translations() {
 	load_plugin_textdomain( 'sermon-manager', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'wpfc_sermon_translations' );
+
+// Add Images for Custom Taxonomies
+require_once plugin_dir_path( __FILE__ ) . 'includes/taxonomy-images/taxonomy-images.php';
 
 // Add Options Page
 require_once plugin_dir_path( __FILE__ ) . '/includes/options.php';
@@ -233,9 +236,32 @@ function initialize_wpfc_sermon_meta_boxes() {
 // Meta Box
 add_filter( 'wpfc_meta_boxes', 'wpfc_sermon_metaboxes' );
 
+function custom_service_types() {
+$service_types = array(
+					array( 'name' => 'Adult Bible Class', 'value' => 'Teen Class', ),
+					array( 'name' => 'Sunday AM', 'value' => 'Sunday afternoon', ),
+					array( 'name' => 'Sunday PM', 'value' => 'Sunday PM', ),
+					array( 'name' => 'Midweek Service', 'value' => 'Midweek Service', ),
+					array( 'name' => 'Special Service', 'value' => 'Special Service', ),
+					array( 'name' => 'Radio Broadcast', 'value' => 'Radio Broadcast', ),);	
+		return $service_types;
+}
+
+add_filter('service_types', 'custom_service_types');
+
 // Define the metabox and field configurations.
 function wpfc_sermon_metaboxes( array $meta_boxes ) {
 
+	// Service Types
+	$service_types = array(
+					array( 'name' => 'Adult Bible Class', 'value' => 'Adult Bible Class', ),
+					array( 'name' => 'Sunday AM', 'value' => 'Sunday AM', ),
+					array( 'name' => 'Sunday PM', 'value' => 'Sunday PM', ),
+					array( 'name' => 'Midweek Service', 'value' => 'Midweek Service', ),
+					array( 'name' => 'Special Service', 'value' => 'Special Service', ),
+					array( 'name' => 'Radio Broadcast', 'value' => 'Radio Broadcast', ),);	
+	$service_types = apply_filters('service_types', $service_types);
+	
 	$meta_boxes[] = array(
 		'id'         => 'wpfc_sermon_details',
 		'title'      => 'Sermon Details',
@@ -255,14 +281,7 @@ function wpfc_sermon_metaboxes( array $meta_boxes ) {
 				'desc'    => 'Select the type of service.',
 				'id'      => 'service_type',
 				'type'    => 'select',
-				'options' => array(
-					array( 'name' => 'Adult Bible Class', 'value' => 'Adult Bible Class', ),
-					array( 'name' => 'Sunday AM', 'value' => 'Sunday AM', ),
-					array( 'name' => 'Sunday PM', 'value' => 'Sunday PM', ),
-					array( 'name' => 'Midweek Service', 'value' => 'Midweek Service', ),
-					array( 'name' => 'Special Service', 'value' => 'Special Service', ),
-					array( 'name' => 'Radio Broadcast', 'value' => 'Radio Broadcast', ),
-				),
+				'options' => $service_types
 			),
 			array(
 				'name' => 'Main Bible Passage',
@@ -312,7 +331,43 @@ function wpfc_sermon_metaboxes( array $meta_boxes ) {
 	return $meta_boxes;
 }
 
+// Plugin Meta Links.
+function wpfc_sermon_manager_plugin_row_meta( $links, $file ) {
+	static $plugin_name = '';
 
+	if ( empty( $plugin_name ) ) {
+		$plugin_name = plugin_basename( __FILE__ );
+	}
+
+	if ( $plugin_name != $file ) {
+		return $links;
+	}
+
+	$link = wpfc_sermon_manager_settings_page_link( __( 'Settings', 'sermon-manager' ) );
+	if ( ! empty( $link ) ) {
+		$links[] = $link;
+	}
+
+	$links[] = '<a href="http://www.wpforchurch.com/support/" target="_blank">' . __( 'Support', 'sermon-manager' ) . '</a>';
+
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'wpfc_sermon_manager_plugin_row_meta', 10, 2 );
+
+
+// Settings Page Link.
+function wpfc_sermon_manager_settings_page_link( $link_text = '' ) {
+	if ( empty( $link_text ) ) {
+		$link_text = __( 'Manage Settings', 'sermon-manager' );
+	}
+
+	$link = '';
+	if ( current_user_can( 'manage_options' ) ) {
+		$link = '<a href="' . admin_url( 'edit.php?post_type=wpfc_sermon&page=sermon-manager-for-wordpress/includes/options.php' ) . '">' . esc_html( $link_text ) . '</a>';
+	}
+
+	return $link;
+}
 //create custom columns when listing sermon details in the Admin
 add_action("manage_posts_custom_column", "wpfc_sermon_columns");
 add_filter("manage_edit-wpfc_sermon_columns", "wpfc_sermon_edit_columns");
@@ -478,9 +533,6 @@ function wpfc_sermon_images() {
 	}
 }
 add_action("admin_init", "wpfc_sermon_images");
-
-//include the main class file
-require_once plugin_dir_path( __FILE__ ) . 'includes/taxonomy-images.php';
 
 /**
  * Recent Sermons Widget

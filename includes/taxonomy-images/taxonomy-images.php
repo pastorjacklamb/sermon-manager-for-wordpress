@@ -117,7 +117,9 @@ add_action( 'init', 'taxonomy_image_plugin_text_domain' );
  * @alter     0.7
  */
 function taxonomy_image_plugin_modal_button( $fields, $post ) {
-	if ( isset( $fields['image-size'] ) && isset( $post->ID ) ) {
+	if( get_query_var('taxonomy') == 'wpfc_preacher' || get_query_var('taxonomy') == 'wpfc_sermon_topic' || get_query_var('taxonomy') == 'wpfc_sermon_series' )  {
+		if ( isset( $fields['image-size'] ) && isset( $post->ID ) ) {
+	
 		$image_id = (int) $post->ID;
 
 		$o = '<div class="taxonomy-image-modal-control" id="' . esc_attr( 'taxonomy-image-modal-control-' . $image_id ) . '">';
@@ -135,9 +137,10 @@ function taxonomy_image_plugin_modal_button( $fields, $post ) {
 		$o.= '</div>';
 
 		$fields['image-size']['extra_rows']['taxonomy-image-plugin-button']['html'] = $o;
-	}
+	}	}
 	return $fields;
 }
+
 add_filter( 'attachment_fields_to_edit', 'taxonomy_image_plugin_modal_button', 20, 2 );
 
 
@@ -829,6 +832,7 @@ function taxonomy_image_plugin_control_image( $term_id, $taxonomy ) {
  * @access    private
  */
 function taxonomy_image_plugin_media_upload_popup_js() {
+	if( get_query_var('taxonomy') == 'wpfc_preacher' || get_query_var('taxonomy') == 'wpfc_sermon_topic' || get_query_var('taxonomy') == 'wpfc_sermon_series' )  {
 	wp_enqueue_script(
 		'taxonomy-images-media-upload-popup',
 		taxonomy_image_plugin_url( 'media-upload-popup.js' ),
@@ -843,6 +847,7 @@ function taxonomy_image_plugin_media_upload_popup_js() {
 		'removing'    => esc_html__( 'Removing &#8230;', 'taxonomy-images' ),
 		'removed'     => esc_html__( 'Successfully Removed', 'taxonomy-images' )
 		) );
+	}
 }
 add_action( 'admin_print_scripts-media-upload-popup', 'taxonomy_image_plugin_media_upload_popup_js' );
 
@@ -968,7 +973,7 @@ function taxonomy_image_plugin_activate() {
 			) );
 	}
 }
-//register_activation_hook( __FILE__, 'taxonomy_image_plugin_activate' );
+register_activation_hook( __FILE__, 'taxonomy_image_plugin_activate' );
 
 
 /**
@@ -1140,63 +1145,4 @@ function taxonomy_image_plugin_please_use_filter( $function, $filter ) {
 	'<code>' . esc_html( $function . '()' ) . '</code>',
 	'<code>' . esc_html( $filter ) . '</code>'
 	) );
-}
-
-
-/**
- * Plugin Meta Links.
- *
- * Add a link to this plugin's setting page when it
- * displays in the table on wp-admin/plugins.php.
- *
- * @param     array          List of links.
- * @param     string         Current plugin being displayed in plugins.php.
- * @return    array          Potentially modified list of links.
- *
- * @access    private
- * @since     0.7
- */
-function taxonomy_images_plugin_row_meta( $links, $file ) {
-	static $plugin_name = '';
-
-	if ( empty( $plugin_name ) ) {
-		$plugin_name = plugin_basename( __FILE__ );
-	}
-
-	if ( $plugin_name != $file ) {
-		return $links;
-	}
-
-	$link = taxonomy_images_plugin_settings_page_link( __( 'Settings', 'taxonomy-images' ) );
-	if ( ! empty( $link ) ) {
-		$links[] = $link;
-	}
-
-	$links[] = '<a href="http://wordpress.mfields.org/donate/">' . __( 'Donate', 'taxonomy-images' ) . '</a>';
-
-	return $links;
-}
-add_filter( 'plugin_row_meta', 'taxonomy_images_plugin_row_meta', 10, 2 );
-
-
-/**
- * Settings Page Link.
- *
- * @param     array     Localized link text.
- * @return    string    HTML link to settings page.
- *
- * @access    private
- * @since     0.7
- */
-function taxonomy_images_plugin_settings_page_link( $link_text = '' ) {
-	if ( empty( $link_text ) ) {
-		$link_text = __( 'Manage Settings', 'taxonomy-images' );
-	}
-
-	$link = '';
-	if ( current_user_can( 'manage_options' ) ) {
-		$link = '<a href="' . esc_url( add_query_arg( array( 'page' => 'taxonomy_image_plugin_settings' ), admin_url( 'options-general.php' ) ) ) . '">' . esc_html( $link_text ) . '</a>';
-	}
-
-	return $link;
 }

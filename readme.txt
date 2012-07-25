@@ -1,8 +1,8 @@
 === Sermon Manager ===
 Contributors: wpforchurch
 Donate link: http://wpforchurch.com/
-Tags: church, sermon, sermons, preaching
-Requires at least: 3.0
+Tags: church, sermon, sermons, preaching, podcasting
+Requires at least: 3.4
 Tested up to: 3.4.1
 Stable tag: 1.5
 
@@ -12,7 +12,9 @@ Add audio and video sermons, manage speakers, series, and more to your church we
 
 Sermon Manager is designed to help churches easily publish sermons online. You can add speakers, sermon series, Bible references etc. 
 
-Sermons can have audio files, as well as pdf, doc, ppt, etc adding to them. Video embeds from sites like Vimeo are also possible.
+Sermons can have .mp3 files, as well as pdf, doc, ppt, etc. added to them. Video embeds from sites like Vimeo are also possible.
+
+Images can be attached to any sermon, sermon series, speaker, or sermon topic. There are many filters available for displaying the images in your theme.
 
 It will work with any theme, but themes can be customized to display content as you like. You'll find the template files in the /views folder. You can copy these into the root of your theme folder and customize to suit your site's design. If you need assistance, just post on the forums at WP for Church.
 
@@ -22,7 +24,7 @@ iTunes podcasting support is now available!
 
 [DEMO](http://demo.wpforchurch.com/sermon-manager/)
 
-You can visit the [plugin's homepage](http://wpforchurch.com/plugins/sermon-manager/ "Sermon Manager homepage") to get support.
+You can visit the [plugin's homepage](http://www.wpforchurch.com/products/sermon-manager-for-wordpress/ "Sermon Manager homepage") to get support.
 
 [WP for Church](http://wpforchurch.com/ "WP for Church") provides plugins, themes, and training for churches using WordPress.
 
