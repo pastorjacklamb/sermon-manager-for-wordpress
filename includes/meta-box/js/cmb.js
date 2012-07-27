@@ -60,6 +60,13 @@ jQuery(document).ready(function ($) {
 
 		if (formfield) {
 
+	        if ($(html).html(html).find('img').length > 0) {
+				itemurl = $(html).html(html).find('img').attr('src'); // Use the URL to the size selected.
+				itemclass = $(html).html(html).find('img').attr('class'); // Extract the ID from the returned class name.
+				itemClassBits = itemclass.split(" ");
+				itemid = itemClassBits[itemClassBits.length - 1];
+				itemid = itemid.replace('wp-image-', '');
+	        } else {
 				// It's not an image. Get the URL to the file instead.
 				htmlBits = html.split("'"); // jQuery seems to strip out XHTML when assigning the string to an object. Use alternate method.
 				itemurl = htmlBits[1]; // Use the URL to the file.
@@ -67,6 +74,7 @@ jQuery(document).ready(function ($) {
 				itemtitle = itemtitle.replace('>', '');
 				itemtitle = itemtitle.replace('</a>', '');
 				itemid = ""; // TO DO: Get ID for non-image attachments.
+			}
 
 				html = '<a href="' + itemurl + '" target="_blank" rel="external">View File</a>';
 				uploadStatus = '<div class="no_image"><span class="file_link">' + html + '</span>&nbsp;&nbsp;&nbsp;<a href="#" class="wpfc_remove_file_button" rel="' + formfield + '">Remove</a></div>';
