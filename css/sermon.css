@@ -1,21 +1,23 @@
 /* Sermon Manager CSS http://www.wpforchurch.com/plugins/sermon-manager/ */
-/* TODO - add CSS for image styles */
 
-/*controls padding around jwplayer*/
-#mediaspace_wrapper {padding-bottom:15px;max-width:100%;}
 
-/*controls padding around video embeds*/
+/* controls padding around video embeds */
 div.wpfc_sermon-video {
-	padding-top: 5px;
-	padding-bottom: 5px;
+	margin: 10px 0 10px;
 	max-width: 100%;
 }
 
 #wpfc_sermon iframe, #wpfc_sermon object, #wpfc_sermon embed{max-width: 100%;}
 
+/* controls padding around audio player */
+div.wpfc_sermon-audio {
+	margin: 10px 0 10px;
+	max-width: 100%;
+}
+
 .wpfc_date {
 	text-transform: uppercase;
-	font-size:.7em;
+	font-size:.8em;
 }
 
 #wpfc_sermon_sorting {
@@ -30,33 +32,73 @@ div.wpfc_sermon-video {
 	padding-left: 18px;
 	background: url(icons/mic-icon.png) no-repeat left;
 	list-style: none;
+	margin: 0;
 }
 .widget_recent_sermons span {
 	font-size:.75em;
 	font-color: #444444;
+	margin: 0;
 }
 
 
 #sermon-navigation {padding-bottom: 15px;}
 
 /* WP Pagenavi Styles */
+.wp-pagenavi {
+font-size:12px;
+display:block;
+clear:both;
+padding:20px 0px 20px 10px;
+}
 .wp-pagenavi a,
-.wp-pagenavi .current,
-.wp-pagenavi .pages,{
-	display: block;
-	float: left;
-	width: auto;
-	height: 24px;
-	line-height: 24px;
-	margin: 0 5px 0 0;
-	padding: 0 8px;	
-	text-align: center;
-	text-decoration: none;
+.wp-pagenavi a:link,
+.wp-pagenavi a:visited,
+.wp-pagenavi a:active {
+    padding: 4px 8px !important;
+    margin: 3px !important;
+    text-decoration: none !important;
+    border: 1px solid #C8C8C2 !important;
+    background: #FCFCFC !important;
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    color: #999 !important;
 }
 
-.wp-pagenavi .pages {
-	float: right;
-	margin: 0px;
+.wp-pagenavi a:hover {
+    border: 1px solid #a7a7a3 !important;
+    color: #444 !important;
+}
+
+.wp-pagenavi span.pages {
+    padding: 4px 8px !important;
+    margin: 3px !important;
+    font-style: italic !important;
+    color: #999 !important;
+}
+
+.wp-pagenavi span.current {
+    padding: 4px 8px !important;
+    margin: 3px !important;
+    text-decoration: none !important;
+    border: 1px solid #a7a7a3 !important;
+    background: #FCFCFC !important;
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    font-weight: bold !important;
+    color: #444 !important;
+}
+
+.wp-pagenavi span.extend {
+    padding: 4px 8px !important;
+    margin: 3px !important;
+    text-decoration: none !important;
+    border: 1px solid #C8C8C2 !important;
+    background: #FCFCFC !important;
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Verse Popup Styles */

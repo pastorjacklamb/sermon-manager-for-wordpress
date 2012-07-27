@@ -490,12 +490,10 @@ class wpfc_Meta_Box {
  */
 function wpfc_scripts( $hook ) {
   	if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'page-new.php' || $hook == 'page.php' ) {
-		wp_register_script( 'wpfc-timepicker', WPFC_META_BOX_URL . 'js/jquery.timePicker.min.js' );
-		wp_register_script( 'wpfc-scripts', WPFC_META_BOX_URL . 'js/cmb.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox', 'farbtastic' ) );
-		wp_enqueue_script( 'wpfc-timepicker' );
-		wp_enqueue_script( 'wpfc-scripts' );
-		wp_register_style( 'wpfc-styles', WPFC_META_BOX_URL . 'style.css', array( 'thickbox', 'farbtastic' ) );
-		wp_enqueue_style( 'wpfc-styles' );
+		wp_register_script( 'wpfc-sermon-scripts', WPFC_META_BOX_URL . 'js/cmb.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox', 'farbtastic' ) );
+		wp_enqueue_script( 'wpfc-sermon-scripts' );
+		wp_register_style( 'wpfc-sermon-styles', WPFC_META_BOX_URL . 'style.css', array( 'thickbox', 'farbtastic' ) );
+		wp_enqueue_style( 'wpfc-sermon-styles' );
   	}
 }
 add_action( 'admin_enqueue_scripts', 'wpfc_scripts', 10 );

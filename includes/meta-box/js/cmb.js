@@ -19,19 +19,6 @@ jQuery(document).ready(function ($) {
 	var formfield;
 
 	/**
-	 * Initialize timepicker (this will be moved inline in a future release)
-	 */
-	$('.wpfc_timepicker').each(function () {
-		$('#' + jQuery(this).attr('id')).timePicker({
-			startTime: "07:00",
-			endTime: "22:00",
-			show24Hours: false,
-			separator: ':',
-			step: 30
-		});
-	});
-
-	/**
 	 * Initialize jQuery UI datepicker (this will be moved inline in a future release)
 	 */
 	$('.wpfc_datepicker').each(function () {
@@ -42,20 +29,6 @@ jQuery(document).ready(function ($) {
 	// Wrap date picker in class to narrow the scope of jQuery UI CSS and prevent conflicts
 	$("#ui-datepicker-div").wrap('<div class="wpfc_element" />');
 	
-	/**
-	 * Initialize color picker
-	 */
-    $('input:text.wpfc_colorpicker').each(function (i) {
-        $(this).after('<div id="picker-' + i + '" style="z-index: 1000; background: #EEE; border: 1px solid #CCC; position: absolute; display: block;"></div>');
-        $('#picker-' + i).hide().farbtastic($(this));
-    })
-    .focus(function() {
-        $(this).next().show();
-    })
-    .blur(function() {
-        $(this).next().hide();
-    });
-
 	/**
 	 * File and image upload handling
 	 */
@@ -80,20 +53,13 @@ jQuery(document).ready(function ($) {
 		return false;
 	});
 
-	window.original_send_to_editor = window.send_to_editor;
+	window.my_send_to_editor = window.send_to_editor;
     window.send_to_editor = function (html) {
 		var itemurl, itemclass, itemClassBits, itemid, htmlBits, itemtitle,
 			image, uploadStatus = true;
 
 		if (formfield) {
 
-	        if ($(html).html(html).find('img').length > 0) {
-				itemurl = $(html).html(html).find('img').attr('src'); // Use the URL to the size selected.
-				itemclass = $(html).html(html).find('img').attr('class'); // Extract the ID from the returned class name.
-				itemClassBits = itemclass.split(" ");
-				itemid = itemClassBits[itemClassBits.length - 1];
-				itemid = itemid.replace('wp-image-', '');
-	        } else {
 				// It's not an image. Get the URL to the file instead.
 				htmlBits = html.split("'"); // jQuery seems to strip out XHTML when assigning the string to an object. Use alternate method.
 				itemurl = htmlBits[1]; // Use the URL to the file.
@@ -101,18 +67,9 @@ jQuery(document).ready(function ($) {
 				itemtitle = itemtitle.replace('>', '');
 				itemtitle = itemtitle.replace('</a>', '');
 				itemid = ""; // TO DO: Get ID for non-image attachments.
-			}
 
-			image = /(jpe?g|png|gif|ico)$/gi;
-
-			if (itemurl.match(image)) {
-				uploadStatus = '<div class="img_status"><img src="' + itemurl + '" alt="" /><a href="#" class="wpfc_remove_file_button" rel="' + formfield + '">Remove Image</a></div>';
-			} else {
-				// No output preview if it's not an image
-				// Standard generic output if it's not an image.
 				html = '<a href="' + itemurl + '" target="_blank" rel="external">View File</a>';
 				uploadStatus = '<div class="no_image"><span class="file_link">' + html + '</span>&nbsp;&nbsp;&nbsp;<a href="#" class="wpfc_remove_file_button" rel="' + formfield + '">Remove</a></div>';
-			}
 
 			$('#' + formfield).val(itemurl);
 			$('#' + formfield + '_id').val(itemid);
@@ -120,7 +77,7 @@ jQuery(document).ready(function ($) {
 			tb_remove();
 
 		} else {
-			window.original_send_to_editor(html);
+			window.my_send_to_editor(html);
 		}
 
 		formfield = '';

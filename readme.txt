@@ -22,6 +22,10 @@ Super flexible shortcode for displaying sermons in page content.
 
 iTunes podcasting support is now available!
 
+=== Available Addons ===
+* [Import MP3 to Sermon Manager](http://www.wpforchurch.com/product/import-mp3-to-sermon-manager/)
+* Import from Sermon Browser to Sermon Manager is coming soon! Sign up for the [newsletter](http://www.wpforchurch.com/newsletter/) to make sure you don't miss the announcement!
+
 [DEMO](http://demo.wpforchurch.com/sermon-manager/)
 
 You can visit the [plugin's homepage](http://www.wpforchurch.com/products/sermon-manager-for-wordpress/ "Sermon Manager homepage") to get support.
@@ -66,7 +70,7 @@ none yet :-)
 * Fixed the views count for sermons
 * Update function to add images to series & preachers
 * Added podcasting with iTunes
-* 
+* Properly enqueueing all JavaScript and CSS
 
 = 1.3.3 =
 * Bug fix with menu not showing in some themes 

@@ -85,36 +85,24 @@ function wpfc_display_sermons_shortcode($atts) {
 	ob_start(); ?>
 	<div id="wpfc_sermon">	
 	<div id="wpfc_loading">
-	<?php if(function_exists(wp_pagenavi)) : ?>
-	<div id="sermon-navigation"> 
-	<?php wp_pagenavi( array( 'query' => $listing ) ); ?>
-	</div>
 	<?php
-	endif;
 	if ( !$listing->have_posts() )
 		return;
-	while ( $listing->have_posts() ): $listing->the_post(); global $post;
-
-		$ugly_date = get_post_meta($post->ID, 'sermon_date', 'true');
-		$displayDate = date('l, F j, Y', $ugly_date); ?>
-		<div class="wpfc_date"><?php echo $displayDate; ?></div>
-		<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'sermon-manager' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2> 
-			<div class="wpfc_sermon-meta">
-				<?php 
-					if (get_post_meta($post->ID, 'bible_passage', true)) {
-					echo get_post_meta($post->ID, 'bible_passage', true); ?> |								
-				<?php } 
-					echo the_terms( $post->ID, 'wpfc_preacher', '', ', ', ' ' ); 
-					echo the_terms( $post->ID, 'wpfc_sermon_series', '<br />Series: ', ', ', '' ); 
-				?>
-			</div>
-		<br />
+	while ( $listing->have_posts() ): $listing->the_post(); global $post; ?>
+		<div id="sermonImage">
+			<?php //render_wpfc_sermon_image(); ?>
+		</div>
+		<div id="sermonContent">
+			<div class="wpfc_date"><?php wpfc_sermon_date('l, F j, Y'); ?></div>
+			<h2 class="sermon-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'sermon-manager' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2> 
+			<?php render_wpfc_sermon_excerpt(); ?>
+		</div>
 	<?php
 	endwhile; //end loop
 	if(function_exists(wp_pagenavi)) : ?>
-	<div id="sermon-navigation"> 
-	<?php wp_pagenavi( array( 'query' => $listing ) ); ?>
-	</div>
+		<div id="sermon-navigation"> 
+			<?php wp_pagenavi( array( 'query' => $listing ) ); ?>
+		</div>
 	<?php
 	endif;
 	wp_reset_query();

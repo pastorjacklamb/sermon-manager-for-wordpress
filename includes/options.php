@@ -109,8 +109,13 @@ function wpfc_sermon_options_render_form() {
 				<tr valign="top">
 					<th scope="row"><?php _e('Enable Template Files', 'sermon-manager'); ?></th>
 					<td>
-						<!-- Bibly -->
 						<label><input name="wpfc_options[template]" type="checkbox" value="1" <?php if (isset($options['template'])) { checked('1', $options['template']); } ?> /> <?php _e('Enable template files found in the /views folder', 'sermon-manager'); ?></label><br />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php _e('Disable Sermon Styles', 'sermon-manager'); ?></th>
+					<td>
+						<label><input name="wpfc_options[css]" type="checkbox" value="1" <?php if (isset($options['css'])) { checked('1', $options['css']); } ?> /> <?php _e('Disable Sermon CSS. If you do this, you should copy the styles from sermons.css and include them in your theme CSS.', 'sermon-manager'); ?></label><br />
 					</td>
 				</tr>
 				</table>

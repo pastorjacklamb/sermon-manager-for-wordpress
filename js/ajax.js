@@ -4,6 +4,5 @@ jQuery(document).ready(function(){
     var link = jQuery(this).attr('href');
     jQuery('#wpfc_sermon').fadeOut(500).load(link + ' #wpfc_loading', function(){ jQuery('#wpfc_sermon').fadeIn(500); });
   });
-
 });
   
