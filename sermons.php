@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5 beta5
+Version: 1.5 beta6
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -670,7 +670,9 @@ function render_wpfc_sermon_archive() {
 	global $post; ?>
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<h2 class="sermon-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'sermon-manager' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2> 
-		<?php if ( function_exists("has_post_thumbnail") && has_post_thumbnail() ) { the_post_thumbnail(array(75,75), array("class" => "alignleft post_thumbnail")); } ?>
+		<div class="wpfc_sermon_image">
+			<?php render_sermon_image('thumbnail'); ?>
+		</div>
 		<div class="wpfc_date">
 			<?php wpfc_sermon_date('l, F j, Y'); ?>
 			<?php wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> '); ?>
@@ -765,8 +767,24 @@ function wpfc_sermon_author_filter() {
 //add_filter('the_author', 'wpfc_sermon_author_filter');
 
 // render sermon image - loops through featured image, series image, speaker image, none
-function render_sermon_image($args) {
-//$args = any defined image size in WordPress
+function render_sermon_image($size) {
+	//$size = any defined image size in WordPress
+	//global $post;
+		if( has_post_thumbnail() ) :
+			the_post_thumbnail($size);
+		elseif ( apply_filters( 'taxonomy-images-list-the-terms', '', array( 'taxonomy'     => 'wpfc_sermon_series', ) )) :
+			// get series image
+			print apply_filters( 'taxonomy-images-list-the-terms', '', array(
+				'image_size'   => $size,
+				'taxonomy'     => 'wpfc_sermon_series',
+			) );
+		elseif ( !has_post_thumbnail() && !apply_filters( 'taxonomy-images-list-the-terms', '', array( 'taxonomy'     => 'wpfc_sermon_series',	) ) ) :
+			// get speaker image
+			print apply_filters( 'taxonomy-images-list-the-terms', '', array(
+				'image_size'   => $size,
+				'taxonomy'     => 'wpfc_preacher',
+			) );
+		endif;
 }
 
 // render files section
@@ -791,11 +809,11 @@ function wpfc_sermon_files() {
 		</div>
 	<?php
 	} 
-	if (wpfc_sermon_meta('sermon_notes')) : ?>
+	if (wpfc_sermon_meta('sermon_notes'))  ?>
 		<div id="wpfc_sermon-notes" class="clearfix">
 			<a href="<?php wpfc_sermon_meta('sermon_notes'); ?>" class="sermon-notes">Notes</a>
 		</div>
-	<?php endif;
+	<?php
 }
 
 // render additional files
@@ -825,6 +843,9 @@ function wpfc_sermon_attachments() {
 // render single sermon entry
 function render_wpfc_sermon_single() { 
 	global $post; ?>
+	<div class="wpfc_sermon_image">
+		<?php render_sermon_image('thumbnail'); ?>
+	</div>
 	<div class="wpfc_date clearfix">
 		<?php wpfc_sermon_date('l, F j, Y'); wpfc_sermon_meta('service_type', '<span class="service_type">(', ')</span> '); ?>
 	</div>

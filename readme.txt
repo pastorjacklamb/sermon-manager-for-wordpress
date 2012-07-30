@@ -71,6 +71,7 @@ none yet :-)
 * Update function to add images to series & preachers
 * Added podcasting with iTunes
 * Properly enqueueing all JavaScript and CSS
+* New template tags for easier theme customization
 
 = 1.3.3 =
 * Bug fix with menu not showing in some themes 
