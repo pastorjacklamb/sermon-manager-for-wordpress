@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
 	 */
 	$('.wpfc_datepicker').each(function () {
 		// $('#' + jQuery(this).attr('id')).datepicker();
-		$('#' + jQuery(this).attr('id')).datepicker({ dateFormat: 'mm-dd-yy' });
+		$('#' + jQuery(this).attr('id')).datepicker({ dateFormat: 'mm/dd/yy' });
 		// For more options see http://jqueryui.com/demos/datepicker/#option-dateFormat
 	});
 	// Wrap date picker in class to narrow the scope of jQuery UI CSS and prevent conflicts

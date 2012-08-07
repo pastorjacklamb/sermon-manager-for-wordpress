@@ -1,20 +1,27 @@
-.taxonomy-images-modal .create-association .term-name {
+td.sermon-image-plugin-button {
+	display:none;
+}
+.sermon-images-modal td.sermon-image-plugin-button {
+    display: block !important;
+}
+
+.sermon-images-modal .create-association .term-name {
 	font-style:italic;
 }
-.taxonomy-images-modal .create-association {
+.sermon-images-modal .create-association {
 	display:inline;
 }
-.taxonomy-images-modal .remove-association {
+.sermon-images-modal .remove-association {
 	display:none;
 	color:#bc0b0b;
 	text-decoration:underline;
 	cursor:pointer;
 }
-.taxonomy-images-modal #tab-type_url,
-.taxonomy-images-modal .savesend input {
+.sermon-images-modal #tab-type_url,
+.sermon-images-modal .savesend input {
 	display:none !important;
 }
-.taxonomy-image-thumbnail {
+.sermon-image-thumbnail {
 	display:block;
 	height:77px;
 	width:77px;
@@ -22,7 +29,7 @@
 	text-align:center;
 	margin-bottom:3px;
 }
-.taxonomy-image-control .control {
+.sermon-image-control .control {
 	display:block;
 	float:left;
 	text-indent:-9999em;
@@ -31,11 +38,11 @@
 	background:url( controls.png );
 	background-repeat:no-repeat;
 }
-.taxonomy-image-control .control:hover { cursor:pointer; }
-.taxonomy-image-control .upload { background-position: 0 0; }
-.taxonomy-image-control .upload:hover { background-position: -15px 0 }
-.taxonomy-image-control .remove { background-position:-30px 0; }
-.taxonomy-image-control .remove:hover { background-position:-45px 0; }
-.taxonomy-image-control .library { background-position: -60px 0; }
-.taxonomy-image-control .hide { visibility:hidden; }
-.taxonomy-image-control .show { visibility:visible; }
+.sermon-image-control .control:hover { cursor:pointer; }
+.sermon-image-control .upload { background-position: 0 0; }
+.sermon-image-control .upload:hover { background-position: -15px 0 }
+.sermon-image-control .remove { background-position:-30px 0; }
+.sermon-image-control .remove:hover { background-position:-45px 0; }
+.sermon-image-control .library { background-position: -60px 0; }
+.sermon-image-control .hide { visibility:hidden; }
+.sermon-image-control .show { visibility:visible; }

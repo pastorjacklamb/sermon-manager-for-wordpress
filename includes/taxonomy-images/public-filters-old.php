@@ -18,15 +18,15 @@
  */
 
 
-add_filter( 'sermon-images-get-terms',      'sermon_images_plugin_get_terms', 10, 2 );
-add_filter( 'sermon-images-get-the-terms',  'sermon_images_plugin_get_the_terms', 10, 2 );
-add_filter( 'sermon-images-list-the-terms', 'sermon_images_plugin_list_the_terms', 10, 2 );
+add_filter( 'taxonomy-images-get-terms',      'taxonomy_images_plugin_get_terms', 10, 2 );
+add_filter( 'taxonomy-images-get-the-terms',  'taxonomy_images_plugin_get_the_terms', 10, 2 );
+add_filter( 'taxonomy-images-list-the-terms', 'taxonomy_images_plugin_list_the_terms', 10, 2 );
 
-add_filter( 'sermon-images-queried-term-image',        'sermon_images_plugin_get_queried_term_image', 10, 2 );
-add_filter( 'sermon-images-queried-term-image-data',   'sermon_images_plugin_get_queried_term_image_data', 10, 2 );
-add_filter( 'sermon-images-queried-term-image-id',     'sermon_images_plugin_get_queried_term_image_id' );
-add_filter( 'sermon-images-queried-term-image-object', 'sermon_images_plugin_get_queried_term_image_object' );
-add_filter( 'sermon-images-queried-term-image-url',    'sermon_images_plugin_get_queried_term_image_url', 10, 2 );
+add_filter( 'taxonomy-images-queried-term-image',        'taxonomy_images_plugin_get_queried_term_image', 10, 2 );
+add_filter( 'taxonomy-images-queried-term-image-data',   'taxonomy_images_plugin_get_queried_term_image_data', 10, 2 );
+add_filter( 'taxonomy-images-queried-term-image-id',     'taxonomy_images_plugin_get_queried_term_image_id' );
+add_filter( 'taxonomy-images-queried-term-image-object', 'taxonomy_images_plugin_get_queried_term_image_object' );
+add_filter( 'taxonomy-images-queried-term-image-url',    'taxonomy_images_plugin_get_queried_term_image_url', 10, 2 );
 
 
 /**
@@ -62,13 +62,13 @@ add_filter( 'sermon-images-queried-term-image-url',    'sermon_images_plugin_get
  * @param     array     Named arguments. Please see above for explantion.
  * @return    array     List of term objects.
  *
- * @access    private   Use the 'sermon-images-get-terms' filter.
+ * @access    private   Use the 'taxonomy-images-get-terms' filter.
  * @since     0.7
  */
-function sermon_images_plugin_get_terms( $default, $args = array() ) {
-	$filter = 'sermon-images-get-terms';
+function taxonomy_images_plugin_get_terms( $default, $args = array() ) {
+	$filter = 'taxonomy-images-get-terms';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$args = wp_parse_args( $args, array(
@@ -82,12 +82,10 @@ function sermon_images_plugin_get_terms( $default, $args = array() ) {
 	$args['taxonomy'] = array_map( 'trim', $args['taxonomy'] );
 
 	foreach ( $args['taxonomy'] as $taxonomy ) {
-		if ( ! sermon_image_plugin_check_taxonomy( $taxonomy, $filter ) ) {
 			return array();
-		}
 	}
 
-	$assoc = sermon_image_plugin_get_associations();
+	$assoc = taxonomy_image_plugin_get_associations();
 	if ( empty( $assoc ) ) {
 		return array();
 	}
@@ -153,13 +151,13 @@ function sermon_images_plugin_get_terms( $default, $args = array() ) {
  * @param     array     Named arguments. Please see above for explantion.
  * @return    array     List of term objects. Empty array if none were found.
  *
- * @access    private   Use the 'sermon-images-get-the-terms' filter.
+ * @access    private   Use the 'taxonomy-images-get-the-terms' filter.
  * @since     0.7
  */
-function sermon_images_plugin_get_the_terms( $default, $args ) {
-	$filter = 'sermon-images-get-the-terms';
+function taxonomy_images_plugin_get_the_terms( $default, $args ) {
+	$filter = 'taxonomy-images-get-the-terms';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$args = wp_parse_args( $args, array(
@@ -168,11 +166,10 @@ function sermon_images_plugin_get_the_terms( $default, $args ) {
 		'taxonomy'      => 'category',
 		) );
 
-	if ( ! sermon_image_plugin_check_taxonomy( $args['taxonomy'], $filter ) ) {
 		return array();
-	}
+	
 
-	$assoc = sermon_image_plugin_get_associations();
+	$assoc = taxonomy_image_plugin_get_associations();
 
 	if ( empty( $args['post_id'] ) ) {
 		$args['post_id'] = get_the_ID();
@@ -236,19 +233,19 @@ function sermon_images_plugin_get_the_terms( $default, $args ) {
  * @param     array     Named arguments. Please see above for explantion.
  * @return    string    HTML markup.
  *
- * @access    private   Use the 'sermon-images-list-the-terms' filter.
+ * @access    private   Use the 'taxonomy-images-list-the-terms' filter.
  * @since     0.7
  */
-function sermon_images_plugin_list_the_terms( $default, $args ) {
-	$filter = 'sermon-images-list-the-terms';
+function taxonomy_images_plugin_list_the_terms( $default, $args ) {
+	$filter = 'taxonomy-images-list-the-terms';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$args = wp_parse_args( $args, array(
 		'after'        => '</ul>',
 		'after_image'  => '</li>',
-		'before'       => '<ul class="sermon-images-the-terms">',
+		'before'       => '<ul class="taxonomy-images-the-terms">',
 		'before_image' => '<li>',
 		'image_size'   => 'thumbnail',
 		'post_id'      => 0,
@@ -257,11 +254,7 @@ function sermon_images_plugin_list_the_terms( $default, $args ) {
 
 	$args['having_images'] = true;
 
-	if ( ! sermon_image_plugin_check_taxonomy( $args['taxonomy'], $filter ) ) {
-		return '';
-	}
-
-	$terms = apply_filters( 'sermon-images-get-the-terms', '', $args );
+	$terms = apply_filters( 'taxonomy-images-get-the-terms', '', $args );
 
 	if ( empty( $terms ) ) {
 		return '';
@@ -310,13 +303,13 @@ function sermon_images_plugin_list_the_terms( $default, $args ) {
  * @param     array     Named array of arguments.
  * @return    string    HTML markup for the associated image.
  *
- * @access    private   Use the 'sermon-images-queried-term-image' filter.
+ * @access    private   Use the 'taxonomy-images-queried-term-image' filter.
  * @since     0.7
  */
-function sermon_images_plugin_get_queried_term_image( $default, $args = array() ) {
-	$filter = 'sermon-images-queried-term-image';
+function taxonomy_images_plugin_get_queried_term_image( $default, $args = array() ) {
+	$filter = 'taxonomy-images-queried-term-image';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$args = wp_parse_args( $args, array(
@@ -326,7 +319,7 @@ function sermon_images_plugin_get_queried_term_image( $default, $args = array() 
 		'image_size' => 'thumbnail',
 		) );
 
-	$ID = apply_filters( 'sermon-images-queried-term-image-id', 0 );
+	$ID = apply_filters( 'taxonomy-images-queried-term-image-id', 0 );
 
 	if ( empty( $ID ) ) {
 		return '';
@@ -355,18 +348,18 @@ function sermon_images_plugin_get_queried_term_image( $default, $args = array() 
  *
  * This function should never be called directly in any file
  * however it may be access in any template file via the
- * 'sermon-images-queried-term-image-id' filter.
+ * 'taxonomy-images-queried-term-image-id' filter.
  *
  * @param     mixed     Default value for apply_filters() to return. Unused.
  * @return    int       Image attachment's ID.
  *
- * @access    private   Use the 'sermon-images-queried-term-image-id' filter.
+ * @access    private   Use the 'taxonomy-images-queried-term-image-id' filter.
  * @since     0.7
  */
-function sermon_images_plugin_get_queried_term_image_id( $default ) {
-	$filter = 'sermon-images-queried-term-image-id';
+function taxonomy_images_plugin_get_queried_term_image_id( $default ) {
+	$filter = 'taxonomy-images-queried-term-image-id';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$obj = get_queried_object();
@@ -381,11 +374,7 @@ function sermon_images_plugin_get_queried_term_image_id( $default ) {
 		return 0;
 	}
 
-	if ( ! sermon_image_plugin_check_taxonomy( $obj->taxonomy, $filter ) ) {
-		return 0;
-	}
-
-	$associations = sermon_image_plugin_get_associations();
+	$associations = taxonomy_image_plugin_get_associations();
 	$tt_id = absint( $obj->term_taxonomy_id );
 
 	$ID = 0;
@@ -410,21 +399,21 @@ function sermon_images_plugin_get_queried_term_image_id( $default ) {
  *
  * This function should never be called directly in any file
  * however it may be access in any template file via the
- * 'sermon-images-queried-term-image' filter.
+ * 'taxonomy-images-queried-term-image' filter.
  *
  * @param     mixed          Default value for apply_filters() to return. Unused.
  * @return    stdClass       WordPress Post object.
  *
- * @access    private        Use the 'sermon-images-queried-term-image-object' filter.
+ * @access    private        Use the 'taxonomy-images-queried-term-image-object' filter.
  * @since     0.7
  */
-function sermon_images_plugin_get_queried_term_image_object( $default ) {
-	$filter = 'sermon-images-queried-term-image-object';
+function taxonomy_images_plugin_get_queried_term_image_object( $default ) {
+	$filter = 'taxonomy-images-queried-term-image-object';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
-	$ID = apply_filters( 'sermon-images-queried-term-image-id', 0 );
+	$ID = apply_filters( 'taxonomy-images-queried-term-image-id', 0 );
 
 	$image = new stdClass;
 	if ( ! empty( $ID ) ) {
@@ -455,20 +444,20 @@ function sermon_images_plugin_get_queried_term_image_object( $default ) {
  * @param     array          Named Arguments.
  * @return    string         Image URL.
  *
- * @access    private        Use the 'sermon-images-queried-term-image-url' filter.
+ * @access    private        Use the 'taxonomy-images-queried-term-image-url' filter.
  * @since     0.7
  */
-function sermon_images_plugin_get_queried_term_image_url( $default, $args = array() ) {
-	$filter = 'sermon-images-queried-term-image-url';
+function taxonomy_images_plugin_get_queried_term_image_url( $default, $args = array() ) {
+	$filter = 'taxonomy-images-queried-term-image-url';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$args = wp_parse_args( $args, array(
 		'image_size' => 'thumbnail',
 		) );
 
-	$data = apply_filters( 'sermon-images-queried-term-image-data', array(), $args );
+	$data = apply_filters( 'taxonomy-images-queried-term-image-data', array(), $args );
 
 	$url = '';
 	if ( isset( $data['url'] ) ) {
@@ -500,21 +489,21 @@ function sermon_images_plugin_get_queried_term_image_url( $default, $args = arra
  * @param     array          Named Arguments.
  * @return    array          Image data: url, width and height.
  *
- * @access    private        Use the 'sermon-images-queried-term-image-data' filter.
+ * @access    private        Use the 'taxonomy-images-queried-term-image-data' filter.
  * @since     0.7
  * @alter     0.7.2
  */
-function sermon_images_plugin_get_queried_term_image_data( $default, $args = array() ) {
-	$filter = 'sermon-images-queried-term-image-data';
+function taxonomy_images_plugin_get_queried_term_image_data( $default, $args = array() ) {
+	$filter = 'taxonomy-images-queried-term-image-data';
 	if ( $filter !== current_filter() ) {
-		sermon_image_plugin_please_use_filter( __FUNCTION__, $filter );
+		taxonomy_image_plugin_please_use_filter( __FUNCTION__, $filter );
 	}
 
 	$args = wp_parse_args( $args, array(
 		'image_size' => 'thumbnail',
 		) );
 
-	$ID = apply_filters( 'sermon-images-queried-term-image-id', 0 );
+	$ID = apply_filters( 'taxonomy-images-queried-term-image-id', 0 );
 
 	if ( empty( $ID ) ) {
 		return array();

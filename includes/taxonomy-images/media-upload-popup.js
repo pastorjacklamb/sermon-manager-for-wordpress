@@ -21,16 +21,16 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	if ( 0 < ID ) {
-		$( 'body' ).addClass( 'taxonomy-images-modal' );
+		$( 'body' ).addClass( 'sermon-images-modal' );
 
-		var buttons = $( '.taxonomy-images-modal .create-association' );
+		var buttons = $( '.sermon-images-modal .create-association' );
 
 		/* Add hidden input to search form. */
-		$( '#filter' ).prepend( '<input type="hidden" name="taxonomy_images_plugin" value="' + ID + '" />' );
+		$( '#filter' ).prepend( '<input type="hidden" name="sermon_images_plugin" value="' + ID + '" />' );
 
 		if ( 'image_id' in below.taxonomyImagesPlugin ) {
 			buttons.each( function( i, e ) {
-				var image_id = $( e ).parent().find( '.taxonomy-image-button-image-id' ).val();
+				var image_id = $( e ).parent().find( '.sermon-image-button-image-id' ).val();
 				if ( image_id == below.taxonomyImagesPlugin.image_id ) {
 					$( e ).hide();
 					$( e ).parent().find( '.remove-association' ).css( 'display', 'inline' );
@@ -39,7 +39,7 @@ jQuery( document ).ready( function( $ ) {
 		}
 	}
 
-	$( '.taxonomy-images-modal .remove-association' ).live( 'click', function () {
+	$( '.sermon-images-modal .remove-association' ).live( 'click', function () {
 		var button = $( this );
 		originalText = button.html();
 		button.html( TaxonomyImagesModal.removing );
@@ -49,8 +49,8 @@ jQuery( document ).ready( function( $ ) {
 			type: "POST",
 			dataType: 'json',
 			data: {
-				'action'   : 'taxonomy_image_plugin_remove_association',
-				'wp_nonce' : $( this ).parent().find( '.taxonomy-image-button-nonce-remove' ).val(),
+				'action'   : 'sermon_image_plugin_remove_association',
+				'wp_nonce' : $( this ).parent().find( '.sermon-image-button-nonce-remove' ).val(),
 				'tt_id'    : ID
 				},
 			cache: false,
@@ -58,7 +58,7 @@ jQuery( document ).ready( function( $ ) {
 				if ( 'good' === response.status ) {
 					button.html( TaxonomyImagesModal.removed ).fadeOut( 200, function() {
 						$( this ).hide();
-						var selector = parent.document.getElementById( 'taxonomy_image_plugin_' + ID );
+						var selector = parent.document.getElementById( 'sermon_image_plugin_' + ID );
 						$( selector ).attr( 'src', below.taxonomyImagesPlugin.img_src );
 						$( this ).parent().find( '.create-association' ).show();
 						$( this ).html( originalText );
@@ -72,7 +72,7 @@ jQuery( document ).ready( function( $ ) {
 		return false;
 	} );
 
-	$( '.taxonomy-images-modal .create-association' ).live( 'click', function () {
+	$( '.sermon-images-modal .create-association' ).live( 'click', function () {
 		var button, selector, originalText;
 		if ( 0 == ID ) {
 			return;
@@ -87,9 +87,9 @@ jQuery( document ).ready( function( $ ) {
 			type     : "POST",
 			dataType : 'json',
 			data: {
-				'action'        : 'taxonomy_image_create_association',
-				'wp_nonce'      : $( this ).parent().find( '.taxonomy-image-button-nonce-create' ).val(),
-				'attachment_id' : $( this ).parent().find( '.taxonomy-image-button-image-id' ).val(),
+				'action'        : 'sermon_image_create_association',
+				'wp_nonce'      : $( this ).parent().find( '.sermon-image-button-nonce-create' ).val(),
+				'attachment_id' : $( this ).parent().find( '.sermon-image-button-image-id' ).val(),
 				'tt_id'         : parseInt( ID )
 				},
 			success: function ( response ) {
@@ -97,7 +97,7 @@ jQuery( document ).ready( function( $ ) {
 					var parent_id = button.parent().attr( 'id' );
 
 					/* Set state of all other buttons. */
-					$( '.taxonomy-image-modal-control' ).each( function( i, e ) {
+					$( '.sermon-image-modal-control' ).each( function( i, e ) {
 						if ( parent_id == $( e ).attr( 'id' ) ) {
 							return true;
 						}
@@ -105,10 +105,10 @@ jQuery( document ).ready( function( $ ) {
 						$( e ).find( '.remove-association' ).hide();
 					} );
 
-					selector = parent.document.getElementById( 'taxonomy-image-control-' + ID );
+					selector = parent.document.getElementById( 'sermon-image-control-' + ID );
 
 					/* Update the image on the screen below */
-					$( selector ).find( '.taxonomy-image-thumbnail img' ).each( function ( i, e ) {
+					$( selector ).find( '.sermon-image-thumbnail img' ).each( function ( i, e ) {
 						$( e ).attr( 'src', response.attachment_thumb_src );
 					} );
 

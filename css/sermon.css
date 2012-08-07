@@ -1,23 +1,58 @@
-/* Sermon Manager CSS http://www.wpforchurch.com/plugins/sermon-manager/ */
+/* Sermon Manager CSS http://www.wpforchurch.com/products/sermon-manager-for-wordpress/ */
 
+#wpfc_sermon_image img{
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+#wpfc_sermon_wrap {
+	padding-bottom: 20px;
+	clear:both;
+}
+
+.single-wpfc_sermon #wpfc_sermon_wrap {
+	padding-bottom: 0px;
+}
+
+.sermon_date, .service_type {
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.sermon_series:before {
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: right;
+}
+
+.service_type:after {
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: right;
+}
 
 /* controls padding around video embeds */
-div.wpfc_sermon-video {
+#wpfc_sermon-video {
 	margin: 10px 0 10px;
 	max-width: 100%;
+	clear:both;
 }
 
-#wpfc_sermon iframe, #wpfc_sermon object, #wpfc_sermon embed{max-width: 100%;}
+.mejs-container, #wpfc_sermon iframe, #wpfc_sermon object, #wpfc_sermon embed {max-width: 100%;}
+
+#wpfc_sermon-notes {
+	margin: 10px 0 10px;
+}
 
 /* controls padding around audio player */
-div.wpfc_sermon-audio {
+#wpfc_sermon-audio {
 	margin: 10px 0 10px;
 	max-width: 100%;
-}
-
-.wpfc_date {
-	text-transform: uppercase;
-	font-size:.8em;
+	clear:both;
 }
 
 #wpfc_sermon_sorting {
@@ -39,7 +74,6 @@ div.wpfc_sermon-audio {
 	font-color: #444444;
 	margin: 0;
 }
-
 
 #sermon-navigation {padding-bottom: 15px;}
 
@@ -105,34 +139,60 @@ padding:20px 0px 20px 10px;
 .bibly_popup_outer{font-size:1.2em;}
 .bibly_popup_footer {display:none;}
 
-/*styles for additional files*/
-.single-wpfc_sermon a[href$='.ppt'], .single-wpfc_sermon a[href$='.pptx'] {
+/* Styles for additional files */
+#wpfc-attachments a[href$='.ppt'], #wpfc-attachments a[href$='.pptx'] {
 	background:url(icons/ppt.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
 	line-height: 16px;
 }
-.single-wpfc_sermon a[href$='.doc'], .single-wpfc_sermon a[href$='.rtf'], .single-wpfc_sermon a[href$='.docx']  {
+#wpfc-attachments a[href$='.doc'], #wpfc-attachments a[href$='.rtf'], #wpfc-attachments a[href$='.docx']  {
 	background:url(icons/word.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
 	line-height: 16px;
 }
-.single-wpfc_sermon a[href$='.pdf'] {
+#wpfc-attachments a[href$='.pdf'] {
 	background:url(icons/pdf.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
 	line-height: 16px;
 }
-.single-wpfc_sermon a[href$='.mp3'] {
+#wpfc-attachments a[href$='.mp3'] {
 	background:url(icons/audio.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
 	line-height: 16px;
 }
-.single-wpfc_sermon a[href$='.mp4'] {
+#wpfc-attachments a[href$='.mp4'] {
 	background:url(icons/video.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
 	line-height: 16px;
+}
+
+/* Image styles for Sermon Series, Speakers */
+.sermon-images-the-terms {
+	margin:10px 0;
+	padding:0;
+	zoom:1;
+}
+.sermon-images-the-terms:before,
+.sermon-images-the-terms:after {
+	content:"\0020";
+	display:block;
+	height:0;
+	visibility:hidden;
+	clear:both;
+}
+.sermon-images-the-terms li,
+.sermon-images-the-terms a,
+.sermon-images-the-terms img {
+	float:left;
+	margin:0;
+	padding:0;
+}
+.sermon-images-the-terms li {
+	list-style-type:none;
+	margin:0 10px 10px 0;
 }

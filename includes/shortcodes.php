@@ -25,6 +25,7 @@ function wpfc_display_sermons_shortcode($atts) {
 		'hide_nav' => false,
 		'taxonomy' => false,
 		'tax_term' => false,
+		'image_size' => 'sermon_small',
 		'tax_operator' => 'IN'
 	), $atts ) );
 	// begin - code from : http://wordpress.org/support/topic/wp-pagenavi-with-custom-query-and-paged-variable?replies=2
@@ -89,14 +90,16 @@ function wpfc_display_sermons_shortcode($atts) {
 	if ( !$listing->have_posts() )
 		return;
 	while ( $listing->have_posts() ): $listing->the_post(); global $post; ?>
-		<div id="sermonImage">
-			<?php //render_wpfc_sermon_image(); ?>
+	<div id="wpfc_sermon_wrap">
+		<div id="wpfc_sermon_image">
+			<?php render_sermon_image($image_size); ?>
 		</div>
-		<div id="sermonContent">
-			<div class="wpfc_date"><?php wpfc_sermon_date('l, F j, Y'); ?></div>
-			<h2 class="sermon-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'sermon-manager' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2> 
-			<?php render_wpfc_sermon_excerpt(); ?>
+		<div id="wpfc_sermon_meta">
+			<h3 class="sermon-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'sermon-manager' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h3> 
+			<div class="wpfc_date"><?php wpfc_sermon_date('l, F j, Y', '<span class="sermon_date">', '</span> '); wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> ');  ?></div>
+			<p><?php render_wpfc_sermon_excerpt(); ?></p>
 		</div>
+	</div>
 	<?php
 	endwhile; //end loop
 	if(function_exists(wp_pagenavi)) : ?>

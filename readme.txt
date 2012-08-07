@@ -72,6 +72,7 @@ none yet :-)
 * Added podcasting with iTunes
 * Properly enqueueing all JavaScript and CSS
 * New template tags for easier theme customization
+* Added new taxonomy "Book of the Bible" to allow easy sorting of sermons
 
 = 1.3.3 =
 * Bug fix with menu not showing in some themes 
