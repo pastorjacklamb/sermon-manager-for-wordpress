@@ -65,7 +65,7 @@ function create_wpfc_sermon_types()
     'query_var' => true,
     'menu_icon' => plugins_url('/img/book-open-bookmark.png', __FILE__),
 	'capability_type' => 'post',
-    'has_archive' => 'sermons', 
+    'has_archive' => true, 
     'rewrite' => array('slug' => $archive_slug),
     'hierarchical' => false,
     'supports' => array('title','comments', 'thumbnail', 'entry-views')
@@ -266,18 +266,6 @@ function initialize_wpfc_sermon_meta_boxes() {
 // Meta Box
 add_filter( 'wpfc_meta_boxes', 'wpfc_sermon_metaboxes' );
 
-function custom_service_types() {
-$service_types = array(
-					array( 'name' => 'Adult Bible Class', 'value' => 'Teen Class', ),
-					array( 'name' => 'Sunday AM', 'value' => 'Sunday afternoon', ),
-					array( 'name' => 'Sunday PM', 'value' => 'Sunday PM', ),
-					array( 'name' => 'Midweek Service', 'value' => 'Midweek Service', ),
-					array( 'name' => 'Special Service', 'value' => 'Special Service', ),
-					array( 'name' => 'Radio Broadcast', 'value' => 'Radio Broadcast', ),);	
-		return $service_types;
-}
-
-add_filter('service_types', 'custom_service_types');
 
 // Define the metabox and field configurations.
 function wpfc_sermon_metaboxes( array $meta_boxes ) {
@@ -324,7 +312,7 @@ function wpfc_sermon_metaboxes( array $meta_boxes ) {
 				'desc' => 'Type a brief description about this sermon, an outline, or a full manuscript',
 				'id'   => 'sermon_description',
 				'type' => 'wysiwyg',
-				'options' => array(	'textarea_rows' => 5, 'media_buttons' => false,),
+				'options' => array(	'textarea_rows' => 7, 'media_buttons' => false,),
 			),
 		),
 	);
@@ -825,7 +813,7 @@ function render_sermon_image($size) {
 function wpfc_sermon_files() {
 	if ( get_wpfc_sermon_meta('sermon_video') ) { 
 		echo '<div id="wpfc_sermon-video" class="clearfix">';
-			do_shortcode(wpfc_sermon_meta('sermon_video')); 
+			echo do_shortcode( get_wpfc_sermon_meta('sermon_video')); 
 		echo '</div>';								
 	} elseif ( !get_wpfc_sermon_meta('sermon_video') && get_wpfc_sermon_meta('sermon_audio') ) {
 		echo '<div id="wpfc_sermon-audio" class="clearfix">';?>

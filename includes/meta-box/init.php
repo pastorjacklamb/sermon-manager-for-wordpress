@@ -429,7 +429,7 @@ class wpfc_Meta_Box {
 			}
 			
 			if ( ($field['type'] == 'textarea') || ($field['type'] == 'textarea_small') ) {
-				$new = htmlspecialchars( $new );
+				$new =  $new ;
 			}
 
 			if ( ($field['type'] == 'textarea_code') ) {
