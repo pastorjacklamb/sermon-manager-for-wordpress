@@ -96,11 +96,6 @@ add_action( 'init', 'sermon_image_plugin_add_image_size' );
  * @access    private
  * @since     0.7.3
  */
-function sermon_image_plugin_text_domain() {
-	load_plugin_textdomain( 'sermon-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-//add_action( 'init', 'sermon_image_plugin_text_domain' );
-
 
 /**
  * Modal Button.
@@ -477,6 +472,7 @@ function sermon_image_plugin_get_term_info( $tt_id ) {
  * @access    private
  */
 function sermon_image_plugin_check_permissions( $tt_id ) {
+	global $wpdb;
 	$data = sermon_image_plugin_get_term_info( $tt_id );
 	if ( ! isset( $data['taxonomy'] ) ) {
 		return false;

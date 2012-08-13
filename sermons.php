@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5 beta8
+Version: 1.5 RC1
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -282,34 +282,34 @@ function wpfc_sermon_metaboxes( array $meta_boxes ) {
 	
 	$meta_boxes[] = array(
 		'id'         => 'wpfc_sermon_details',
-		'title'      => 'Sermon Details',
+		'title'      => __('Sermon Details', 'sermon-manager'),
 		'pages'      => array( 'wpfc_sermon', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
 			array(
-				'name' => 'Date',
-				'desc' => 'Enter the date the sermon was given. <strong>NOTE: Each sermon must have a date!</strong>',
+				'name' => __('Date', 'sermon-manager'),
+				'desc' => __('Enter the date the sermon was given. <strong>NOTE: Each sermon must have a date!</strong>', 'sermon-manager'),
 				'id'   => 'sermon_date',
 				'type' => 'text_date_timestamp',
 			),
 			array(
-				'name'    => 'Service Type',
-				'desc'    => 'Select the type of service.',
+				'name'    => __('Service Type', 'sermon-manager'),
+				'desc'    => __('Select the type of service.', 'sermon-manager'),
 				'id'      => 'service_type',
 				'type'    => 'select',
 				'options' => $service_types
 			),
 			array(
-				'name' => 'Main Bible Passage',
-				'desc' => 'Enter the Bible passage with the full book names,e.g. "John 3:16-18".',
+				'name' => __('Main Bible Passage', 'sermon-manager'),
+				'desc' => __('Enter the Bible passage with the full book names,e.g. "John 3:16-18".', 'sermon-manager'),
 				'id'   => 'bible_passage',
 				'type' => 'text',
 			),
 			array(
-				'name' => 'Description',
-				'desc' => 'Type a brief description about this sermon, an outline, or a full manuscript',
+				'name' => __('Description', 'sermon-manager'),
+				'desc' => __('Type a brief description about this sermon, an outline, or a full manuscript', 'sermon-manager'),
 				'id'   => 'sermon_description',
 				'type' => 'wysiwyg',
 				'options' => array(	'textarea_rows' => 7, 'media_buttons' => false,),
@@ -319,27 +319,27 @@ function wpfc_sermon_metaboxes( array $meta_boxes ) {
 
 	$meta_boxes[] = array(
 		'id'         => 'wpfc_sermon_files',
-		'title'      => 'Sermon Files',
+		'title'      => __('Sermon Files', 'sermon-manager'),
 		'pages'      => array( 'wpfc_sermon', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
 			array(
-				'name' => 'Location of MP3',
-				'desc' => 'Upload an audio file or enter an URL.',
+				'name' => __('Location of MP3', 'sermon-manager'),
+				'desc' => __('Upload an audio file or enter an URL.', 'sermon-manager'),
 				'id'   => 'sermon_audio',
 				'type' => 'file',
 			),
 			array(
-				'name' => 'Video Embed Code',
-				'desc' => 'Paste your embed code for Vimeo, Youtube, or other service here',
+				'name' => __('Video Embed Code', 'sermon-manager'),
+				'desc' => __('Paste your embed code for Vimeo, Youtube, or other service here', 'sermon-manager'),
 				'id'   => 'sermon_video',
 				'type' => 'textarea',
 			),
 			array(
-				'name' => 'Sermon Notes',
-				'desc' => 'Upload a pdf file or enter an URL.',
+				'name' => __('Sermon Notes', 'sermon-manager'),
+				'desc' => __('Upload a pdf file or enter an URL.', 'sermon-manager'),
 				'id'   => 'sermon_notes',
 				'type' => 'file',
 			),
@@ -543,8 +543,8 @@ function wpfc_right_now() {
 function wpfc_sermon_images() {
 	if ( function_exists( 'add_image_size' ) ) { 
 		add_image_size( 'sermon_small', 75, 75, true ); 
-		add_image_size( 'sermon_medium', 300, 9999 ); 
-		add_image_size( 'sermon_wide', 940, 9999 ); 
+		add_image_size( 'sermon_medium', 300, 200, true ); 
+		add_image_size( 'sermon_wide', 940, 350, true ); 
 	}
 }
 add_action("admin_init", "wpfc_sermon_images");
@@ -799,12 +799,20 @@ function render_sermon_image($size) {
 			print apply_filters( 'sermon-images-list-the-terms', '', array(
 				'image_size'   => $size,
 				'taxonomy'     => 'wpfc_sermon_series',
+				'after' => '',
+				'after_image' => '', 
+				'before' => '', 
+				'before_image' => ''
 			) );
 		elseif ( !has_post_thumbnail() && !apply_filters( 'sermon-images-list-the-terms', '', array( 'taxonomy'     => 'wpfc_sermon_series',	) ) ) :
 			// get speaker image
 			print apply_filters( 'sermon-images-list-the-terms', '', array(
 				'image_size'   => $size,
 				'taxonomy'     => 'wpfc_preacher',
+				'after' => '',
+				'after_image' => '', 
+				'before' => '', 
+				'before_image' => ''
 			) );
 		endif;
 }
@@ -859,7 +867,6 @@ function wpfc_sermon_attachments() {
 	}
 }
 
-add_filter('the_content', 'add_wpfc_sermon_content');
 // render single sermon entry
 function render_wpfc_sermon_single() { 
 	global $post; ?>
@@ -872,8 +879,8 @@ function render_wpfc_sermon_single() {
 				<?php 
 					wpfc_sermon_date('l, F j, Y', '<span class="sermon_date">', '</span> '); wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> '); 
 					wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
-					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', '', '', '</span>', '' );
-					echo the_terms( $post->ID, 'wpfc_sermon_series', '<span class="sermon_series">Series: ', '', '', '</span>', '' ); 
+					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ' ', '</span>');
+					echo the_terms( $post->ID, 'wpfc_sermon_series', '<span class="sermon_series">Series: ', ' ', '</span>' ); 
 				?>
 			</p>
 		</div>
@@ -886,29 +893,35 @@ function render_wpfc_sermon_single() {
 		
 		<?php wpfc_sermon_attachments(); ?>
 
-		<?php echo the_terms( $post->ID, 'wpfc_sermon_topics', '<p class="sermon_topics">Topics: ', '', '', '</p>', '' ); ?>		
+		<?php echo the_terms( $post->ID, 'wpfc_sermon_topics', '<p class="sermon_topics">Topics: ', ', ', '</p>' ); ?>		
 	</div>
 <?php
 }
 
-add_filter('the_excerpt', 'add_wpfc_sermon_excerpt');
 // render single sermon entry
 function render_wpfc_sermon_excerpt() { 
 	global $post;?>
-	<div id="wpfc_sermon clearfix">		  
-		<p>	<?php 
-			wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
-			echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', '', '', '</span>', '' );
-			echo the_terms( $post->ID, 'wpfc_sermon_series', '<span class="sermon_series">Series: ', '', '', '</span>', '' ); 
-			?>
-		</p>
-		
-		<?php wpfc_sermon_description(); ?>
-	
+	<div id="wpfc_sermon_wrap">
+		<div id="wpfc_sermon_image">
+			<?php render_sermon_image('sermon_small'); ?>
+		</div>
+		<div class="wpfc_sermon_meta clearfix">
+			<p>	
+				<?php 
+					wpfc_sermon_date('l, F j, Y', '<span class="sermon_date">', '</span> '); wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> '); 
+					wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
+					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ' ', '</span>');
+					echo the_terms( $post->ID, 'wpfc_sermon_series', '<span class="sermon_series">Series: ', ' ', '</span>' ); 
+				?>
+			</p>
+		</div>
 	</div>
 	<?php 
 }
-	
+
+// Add sermon content
+add_filter('the_content', 'add_wpfc_sermon_content');
+add_filter('the_excerpt', 'add_wpfc_sermon_excerpt');	
 function add_wpfc_sermon_content($content) {
 	if ( 'wpfc_sermon' == get_post_type() ){
 		$new_content = render_wpfc_sermon_single();

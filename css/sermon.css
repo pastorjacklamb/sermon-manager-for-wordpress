@@ -1,13 +1,27 @@
 /* Sermon Manager CSS http://www.wpforchurch.com/products/sermon-manager-for-wordpress/ */
 
-#wpfc_sermon_image img{
+.single-wpfc_sermon #wpfc_sermon_image {
+    margin: 10px 0 10px;
+}
+
+#wpfc_sermon_image{
 	float: left;
-	margin: 0 10px 10px 0;
+}
+
+#wpfc_sermon_image img{
+	max-width: 100%;
+	height: auto;
+	margin: 0 10px 0!important;
 }
 
 #wpfc_sermon_wrap {
 	padding-bottom: 20px;
 	clear:both;
+}
+
+#wpfc_sermon_sorting form {
+    display: inline;
+    margin: 0 10px 10px 0;
 }
 
 .single-wpfc_sermon #wpfc_sermon_wrap {
@@ -20,19 +34,27 @@
 }
 
 .sermon_series:before {
-   content: "."; 
-   visibility: hidden; 
-   display: block; 
-   height: 0; 
-   clear: right;
+	content: "."; 
+	visibility: hidden; 
+	display: block; 
+	height: 0; 
+	clear: right;
 }
 
 .service_type:after {
-   content: "."; 
-   visibility: hidden; 
-   display: block; 
-   height: 0; 
-   clear: right;
+	content: "."; 
+	visibility: hidden; 
+	display: block; 
+	height: 0; 
+	clear: right;
+}
+
+#wpfc_sermon_tax_desc:after {
+	content: "."; 
+	visibility: hidden; 
+	display: block; 
+	height: 0; 
+	clear: right;
 }
 
 /* controls padding around video embeds */
@@ -64,13 +86,13 @@
 	margin-left: 0px!important;
 }
 .widget_recent_sermons li {
-	padding-left: 18px;
+	padding-left: 18px!important;
 	background: url(icons/mic-icon.png) no-repeat left;
-	list-style: none;
+	list-style: none!important;
 	margin: 0;
 }
 .widget_recent_sermons span {
-	font-size:.75em;
+	font-size: 0.75em;
 	font-color: #444444;
 	margin: 0;
 }
@@ -195,4 +217,32 @@ padding:20px 0px 20px 10px;
 .sermon-images-the-terms li {
 	list-style-type:none;
 	margin:0 10px 10px 0;
+}
+
+ul#wpfc_images_grid {
+	margin:0!important;
+}
+
+ul#wpfc_images_grid:after {
+	content: "."; 
+	visibility: hidden; 
+	display: block; 
+	height: 0; 
+	clear: right;
+}
+
+li.wpfc_grid_image {
+	list-style-type:none!important;
+	margin:0 10px 10px 0!important;
+	width: 47%;
+	float: left;
+}
+
+li.wpfc_grid_image img{
+	max-width: 100%;
+	height: auto;
+}
+
+h3.wpfc_grid_title a {
+	text-decoration: none;
 }

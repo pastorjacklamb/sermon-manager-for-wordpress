@@ -20,6 +20,10 @@ It will work with any theme, but themes can be customized to display content as 
 
 Super flexible shortcode for displaying sermons in page content.
 
+Display a grid of images assigned to speakers or series with a new shortcode [sermon-images]
+
+Display a list of sermon series, preachers, sermon topics, or book of the Bible with a new shortcode [list-sermons]
+
 iTunes podcasting support is now available!
 
 === Available Addons ===
@@ -73,6 +77,8 @@ none yet :-)
 * Properly enqueueing all JavaScript and CSS
 * New template tags for easier theme customization
 * Added new taxonomy "Book of the Bible" to allow easy sorting of sermons
+* Display a grid of images assigned to speakers or series with a new shortcode [sermon-images]
+* Display a list of sermon series, preachers, sermon topics, or book of the Bible with a new shortcode [list-sermons]
 
 = 1.3.3 =
 * Bug fix with menu not showing in some themes 

@@ -74,7 +74,7 @@ function sermon_images_plugin_get_terms( $default, $args = array() ) {
 	$args = wp_parse_args( $args, array(
 		'cache_images'  => true,
 		'having_images' => true,
-		'taxonomy'      => 'category',
+		'taxonomy'      => 'wpfc_sermon_series',
 		'term_args'     => array(),
 		) );
 
@@ -165,7 +165,7 @@ function sermon_images_plugin_get_the_terms( $default, $args ) {
 	$args = wp_parse_args( $args, array(
 		'having_images' => true,
 		'post_id'       => 0,
-		'taxonomy'      => 'category',
+		'taxonomy'      => 'wpfc_sermon_series',
 		) );
 
 	if ( ! sermon_image_plugin_check_taxonomy( $args['taxonomy'], $filter ) ) {
@@ -252,7 +252,7 @@ function sermon_images_plugin_list_the_terms( $default, $args ) {
 		'before_image' => '<li>',
 		'image_size'   => 'thumbnail',
 		'post_id'      => 0,
-		'taxonomy'     => 'category',
+		'taxonomy'     => 'wpfc_sermon_series',
 		) );
 
 	$args['having_images'] = true;
@@ -303,7 +303,7 @@ function sermon_images_plugin_list_the_terms( $default, $args ) {
  * is specified, this function will return an empty string.
  *
  * Designed to be used in archive templates including
- * (but not limited to) archive.php, category.php, tag.php,
+ * (but not limited to) archive.php, 
  * taxonomy.php as well as derivatives of these templates.
  *
  * @param     mixed     Default value for apply_filters() to return. Unused.

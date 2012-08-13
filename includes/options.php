@@ -107,7 +107,7 @@ function wpfc_sermon_options_render_form() {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><?php _e('Enable Template Files', 'sermon-manager'); ?></th>
+					<th scope="row"><?php _e('Enable Template Files - this is for users upgrading from an older version who have issues with version 1.5+.', 'sermon-manager'); ?></th>
 					<td>
 						<label><input name="wpfc_options[template]" type="checkbox" value="1" <?php if (isset($options['template'])) { checked('1', $options['template']); } ?> /> <?php _e('Enable template files found in the /views folder', 'sermon-manager'); ?></label><br />
 					</td>
