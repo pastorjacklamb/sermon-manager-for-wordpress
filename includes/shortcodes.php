@@ -39,12 +39,15 @@ function wpfc_display_images_shortcode( $atts = array () ) {
 		
 		$terms = apply_filters( 'sermon-images-get-terms', '', array('taxonomy' => $tax, 'order' => $order, 'orderby' => 'name' ) );
 		if ( ! empty( $terms ) ) { 
-			print '<ul id="wpfc_images_grid">'; foreach( (array) $terms as $term ) { 
-				print '<li class="wpfc_grid_image">';
-				print '<a href="' . esc_url( get_term_link( $term, $term->taxonomy ) ) . '">' . wp_get_attachment_image( $term->image_id, $size ) . '</a>';
-				print '<h3 class="wpfc_grid_title"><a href="' . esc_url( get_term_link( $term, $term->taxonomy ) ) . '">' . $term->name . '</a></h3>';
-				print '</li>'; 
-			} print '</ul>'; }
+			$list = '<ul id="wpfc_images_grid">'; foreach( (array) $terms as $term ) { 
+				$list .= '<li class="wpfc_grid_image">';
+				$list .= '<a href="' . esc_url( get_term_link( $term, $term->taxonomy ) ) . '">' . wp_get_attachment_image( $term->image_id, $size ) . '</a>';
+				$list .= '<h3 class="wpfc_grid_title"><a href="' . esc_url( get_term_link( $term, $term->taxonomy ) ) . '">' . $term->name . '</a></h3>';
+				$list .= '</li>'; 
+			} 
+			$list .= '</ul>'; 
+		}
+	return $list;
 }
 
 // Create the shortcode

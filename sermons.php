@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5 RC1
+Version: 1.5
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -47,7 +47,7 @@ function create_wpfc_sermon_types()
     'not_found' =>  __('No sermons found', 'sermon-manager'),
     'not_found_in_trash' => __('No sermons found in Trash', 'sermon-manager'), 
     'parent_item_colon' => '',
-    'menu_name' => 'Sermons',
+    'menu_name' => __( 'Sermons', 'sermon-manager'),
   );
 
     $sermon_settings = get_option('wpfc_options');
@@ -66,9 +66,9 @@ function create_wpfc_sermon_types()
     'menu_icon' => plugins_url('/img/book-open-bookmark.png', __FILE__),
 	'capability_type' => 'post',
     'has_archive' => true, 
-    'rewrite' => array('slug' => $archive_slug),
+    'rewrite' => array( 'slug' => $archive_slug ),
     'hierarchical' => false,
-    'supports' => array('title','comments', 'thumbnail', 'entry-views')
+    'supports' => array( 'title', 'comments', 'thumbnail', 'entry-views' )
   ); 
   register_post_type('wpfc_sermon',$args);
 }

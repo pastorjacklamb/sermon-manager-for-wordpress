@@ -30,7 +30,7 @@ function wpfc_init(){
 
 // Add menu page
 function wpfc_add_options_page() {
-	$page = add_submenu_page('edit.php?post_type=wpfc_sermon', 'Sermon Manager Settings', 'Settings', 'manage_options', __FILE__, 'wpfc_sermon_options_render_form');
+	$page = add_submenu_page('edit.php?post_type=wpfc_sermon', __('Sermon Manager Settings', 'sermon-manager'), __('Settings', 'sermon-manager'), 'manage_options', __FILE__, 'wpfc_sermon_options_render_form');
 	add_action( 'admin_print_styles-' . $page, 'wpfc_sermon_admin_styles' );
 }
 

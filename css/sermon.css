@@ -4,7 +4,19 @@
     margin: 10px 0 10px;
 }
 
-#wpfc_sermon_image{
+#wpfc_sermon_image_wide {
+	max-width: 100%;
+	float: left;
+}
+
+#wpfc_sermon_image_wide img{
+	max-width: 100%;
+	height: auto;
+	margin: 0 0 10px 0;
+}
+
+#wpfc_sermon_image {
+	max-width: 100%;
 	float: left;
 }
 
