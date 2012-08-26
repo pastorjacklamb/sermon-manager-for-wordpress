@@ -118,6 +118,12 @@ function wpfc_sermon_options_render_form() {
 						<label><input name="wpfc_options[css]" type="checkbox" value="1" <?php if (isset($options['css'])) { checked('1', $options['css']); } ?> /> <?php _e('Disable Sermon CSS. If you do this, you should copy the styles from sermons.css and include them in your theme CSS.', 'sermon-manager'); ?></label><br />
 					</td>
 				</tr>
+				<tr valign="top">
+					<th scope="row"><?php _e('Display audio player or video on archive pages', 'sermon-manager'); ?></th>
+					<td>
+						<label><input name="wpfc_options[archive_player]" type="checkbox" value="1" <?php if (isset($options['archive_player'])) { checked('1', $options['archive_player']); } ?> /> <?php _e('Display an audio player or video embed in the archive listing.', 'sermon-manager'); ?></label><br />
+					</td>
+				</tr>
 				</table>
 			</div> <!-- .inside -->
 			</div>

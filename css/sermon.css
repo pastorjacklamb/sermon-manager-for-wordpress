@@ -23,7 +23,7 @@
 #wpfc_sermon_image img{
 	max-width: 100%;
 	height: auto;
-	margin: 0 10px 0!important;
+	margin: 0 10px 0 0!important;
 }
 
 #wpfc_sermon_wrap {
@@ -40,25 +40,15 @@
 	padding-bottom: 0px;
 }
 
+.wpfc_sermon_meta p {margin: 0!important;}
+
 .sermon_date, .service_type {
 	text-transform: uppercase;
 	font-size: 12px;
 }
 
 .sermon_series:before {
-	content: "."; 
-	visibility: hidden; 
-	display: block; 
-	height: 0; 
-	clear: right;
-}
-
-.service_type:after {
-	content: "."; 
-	visibility: hidden; 
-	display: block; 
-	height: 0; 
-	clear: right;
+    clear: left;
 }
 
 #wpfc_sermon_tax_desc:after {
@@ -75,7 +65,9 @@
 	max-width: 100%;
 	clear:both;
 }
-
+#wpfc_sermon-video iframe, #wpfc_sermon-video embed {
+	max-width: 100%;
+}
 .mejs-container, #wpfc_sermon iframe, #wpfc_sermon object, #wpfc_sermon embed {max-width: 100%;}
 
 #wpfc_sermon-notes {
@@ -91,6 +83,22 @@
 
 #wpfc_sermon_sorting {
 	padding: 10px 0 10px;
+}
+
+/* Some clearfix code from HTML5 Boilerplate */
+.cf:before, .cf:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	zoom: 1;
 }
 
 /* Recent Sermon Widget */
@@ -186,7 +194,7 @@ padding:20px 0px 20px 10px;
     height: 16px;
 	line-height: 16px;
 }
-#wpfc-attachments a[href$='.pdf'] {
+#wpfc-attachments a[href$='.pdf'], .sermon-notes {
 	background:url(icons/pdf.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
