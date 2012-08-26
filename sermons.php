@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5
+Version: 1.5.1
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -672,7 +672,7 @@ function wpfc_get_term_dropdown($taxonomy) {
 // Make all queries for sermons order by the sermon date
 function wpfc_sermon_order_query( $query ) {
 	if ( isset($query->query_vars['post_type']) != 'nav_menu_item' ) :
-	if( is_post_type_archive('wpfc_sermon') || is_tax( 'wpfc_preacher' ) || is_tax( 'wpfc_sermon_topics' ) || is_tax( 'wpfc_sermon_series' )  ) {
+	if( is_post_type_archive('wpfc_sermon') || is_tax( 'wpfc_preacher' ) || is_tax( 'wpfc_sermon_topics' ) || is_tax( 'wpfc_sermon_series' ) || is_tax( 'wpfc_bible_book' ) ) {
 		$query->set('meta_key', 'sermon_date');
 		$query->set('meta_value', date("m/d/Y"));
 		$query->set('meta_compare', '>=');
@@ -691,18 +691,16 @@ function render_wpfc_sermon_archive() {
 		<div class="wpfc_sermon_image">
 			<?php render_sermon_image('thumbnail'); ?>
 		</div>
-		<div class="wpfc_date cf">
-			<?php wpfc_sermon_date('l, F j, Y'); ?>
-			<?php wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> '); ?>
-		</div>
-		<div id="wpfc_sermon">		  
-			<div class="wpfc_sermon-meta">
-			<?php 
-				wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
-				echo the_terms( $post->ID, 'wpfc_preacher', '', ', ', ' ' ); 
-				echo the_terms( $post->ID, 'wpfc_sermon_series', '<br /><span class="sermon_series">Series: ', ', ', '' ); 
-			?>
-			</div>
+		<div class="wpfc_sermon_meta cf">
+			<p>	
+				<?php 
+					wpfc_sermon_date('l, F j, Y', '<span class="sermon_date">', '</span> '); wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> ');
+			?></p><p><?php
+					wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
+					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ' ', '</span>');
+					echo the_terms( $post->ID, 'wpfc_sermon_series', '<p><span class="sermon_series">Series: ', ' ', '</span></p>' ); 
+				?>
+			</p>
 		</div>
 	</div>		<?php
 }

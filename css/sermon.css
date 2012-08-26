@@ -23,7 +23,7 @@
 #wpfc_sermon_image img{
 	max-width: 100%;
 	height: auto;
-	margin: 0 10px 0 0!important;
+	margin: 0 10px 0!important;
 }
 
 #wpfc_sermon_wrap {
@@ -194,7 +194,7 @@ padding:20px 0px 20px 10px;
     height: 16px;
 	line-height: 16px;
 }
-#wpfc-attachments a[href$='.pdf'], .sermon-notes {
+#wpfc-attachments a[href$='.pdf'] {
 	background:url(icons/pdf.png) no-repeat center left;
 	padding-left:20px;
     height: 16px;
