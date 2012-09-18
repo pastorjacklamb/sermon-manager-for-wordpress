@@ -489,7 +489,7 @@ class wpfc_Meta_Box {
  * Adding scripts and styles
  */
 function wpfc_scripts( $hook ) {
-  	if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'page-new.php' || $hook == 'page.php' ) {
+	if ('wpfc_sermon' == get_post_type() ) {
 		wp_register_script( 'wpfc-sermon-scripts', WPFC_META_BOX_URL . 'js/cmb.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox', 'farbtastic' ) );
 		wp_enqueue_script( 'wpfc-sermon-scripts' );
 		wp_register_style( 'wpfc-sermon-styles', WPFC_META_BOX_URL . 'style.css', array( 'thickbox', 'farbtastic' ) );

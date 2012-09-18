@@ -302,6 +302,7 @@ function wpfc_sermon_options_render_form() {
 			</div> <!-- .inside -->
 			</div>
 
+			<?php do_action('wpfc_settings_form'); ?>
 			<p class="submit">
 			<input type="submit" class="button-primary" value="<?php _e('Save Changes', 'sermon-manager') ?>" />
 			</p>
