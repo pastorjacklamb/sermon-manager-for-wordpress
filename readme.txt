@@ -4,7 +4,7 @@ Donate link: http://wpforchurch.com/
 Tags: church, sermon, sermons, preaching, podcasting
 Requires at least: 3.4
 Tested up to: 3.4.1
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 
 Add audio and video sermons, manage speakers, series, and more to your church website
 
@@ -69,8 +69,12 @@ Visit the [plugin homepage](http://wpforchurch.com/plugins/sermon-manager/ "Serm
 
 == Changelog ==
 
+= 1.5.5 =
+* Fix settings for bib.ly
+
 = 1.5.4 =
 * Added an action 'wpfc_settings_form' to add fields to the settings page
+* Fixed bug with sermon topic dropdown
 
 = 1.5.3 =
 * Properly prefixed the entry views function to prevent conflicts

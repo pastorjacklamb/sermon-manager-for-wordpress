@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5.3
+Version: 1.5.5
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -498,12 +498,12 @@ function add_wpfc_js() {
 		wp_enqueue_script('mediaelementjs-scripts');
 		wp_enqueue_style('mediaelementjs-styles');
 	}
+	$sermonoptions = get_option('wpfc_options');
 	if (is_single() && 'wpfc_sermon' == get_post_type() && !isset($sermonoptions['bibly']) == '1') { 
 		wp_enqueue_script('bibly-script');
 		wp_enqueue_style('bibly-style');
 		
 		// get options for JS
-		$sermonoptions = get_option('wpfc_options');
 		$Bibleversion = $sermonoptions['bibly_version'];
 		wp_localize_script( 'bibly-script', 'bibly', array( // pass WP data into JS from this point on
 			'linkVersion' 				=> $Bibleversion,
@@ -728,7 +728,7 @@ function render_wpfc_sorting() { ?>
 	</span>
 	<span class="sortTopics">
 	<form action="<?php bloginfo('url'); ?>" method="get">
-		<select name="wpfc_sermon_series" id="wpfc_sermon_series" onchange="return this.form.submit()">
+		<select name="wpfc_sermon_topics" id="wpfc_sermon_topics" onchange="return this.form.submit()">
 			<option value=""><?php _e('Sort by Topic', 'sermon-manager'); ?></option>
 			<?php wpfc_get_term_dropdown('wpfc_sermon_topics'); ?>
 		</select>
