@@ -3,8 +3,8 @@ Contributors: wpforchurch
 Donate link: http://wpforchurch.com/
 Tags: church, sermon, sermons, preaching, podcasting
 Requires at least: 3.4
-Tested up to: 3.4.1
-Stable tag: 1.5.5
+Tested up to: 3.4.2
+Stable tag: 1.5.6
 
 Add audio and video sermons, manage speakers, series, and more to your church website
 
@@ -68,6 +68,11 @@ Visit the [plugin homepage](http://wpforchurch.com/plugins/sermon-manager/ "Serm
 2. Sermon Files
 
 == Changelog ==
+
+= 1.5.6 =
+* Added comma separator in case of multiple speakers or multiple series
+* Added speaker name to widget
+* Added "sort by Book" to sermon sort fields
 
 = 1.5.5 =
 * Fix settings for bib.ly

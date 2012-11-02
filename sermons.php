@@ -3,7 +3,7 @@
 Plugin Name: Sermon Manager for WordPress
 Plugin URI: http://www.wpforchurch.com/products/sermon-manager-for-wordpress/
 Description: Add audio and video sermons, manage speakers, series, and more. Visit <a href="http://wpforchurch.com" target="_blank">Wordpress for Church</a> for tutorials and support.
-Version: 1.5.5
+Version: 1.5.6
 Author: Jack Lamb
 Author URI: http://www.wpforchurch.com/
 License: GPL2
@@ -606,7 +606,27 @@ class WP4C_Recent_Sermons extends WP_Widget {
 		<?php global $post; ?>
 		<li>
 		<a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a><br/>
-		<span class="meta"><?php wpfc_sermon_date('l, F j, Y'); ?></span>
+		<span class="meta">
+			<?php 
+			$terms = get_the_terms( $post->ID, 'wpfc_preacher' );
+									
+			if ( $terms && ! is_wp_error( $terms ) ) : 
+
+				$preacher_links = array();
+
+				foreach ( $terms as $term ) {
+					$preacher_links[] = $term->name;
+				}
+									
+				$preacher = join( ", ", $preacher_links );
+			?>
+
+			<?php echo $preacher; ?>, 
+
+			<?php endif; 
+			wpfc_sermon_date('l, F j, Y'); 
+			?>
+		</span>
 		</li>
 		<?php endwhile; ?>
 		</ul>
@@ -731,6 +751,15 @@ function render_wpfc_sorting() { ?>
 		<select name="wpfc_sermon_topics" id="wpfc_sermon_topics" onchange="return this.form.submit()">
 			<option value=""><?php _e('Sort by Topic', 'sermon-manager'); ?></option>
 			<?php wpfc_get_term_dropdown('wpfc_sermon_topics'); ?>
+		</select>
+	<noscript><div><input type="submit" value="Submit" /></div></noscript>
+	</form>	
+	</span>
+	<span class="sortBooks">
+	<form action="<?php bloginfo('url'); ?>" method="get">
+		<select name="wpfc_bible_book" id="wpfc_bible_book" onchange="return this.form.submit()">
+			<option value=""><?php _e('Sort by Book', 'sermon-manager'); ?></option>
+			<?php wpfc_get_term_dropdown('wpfc_bible_book'); ?>
 		</select>
 	<noscript><div><input type="submit" value="Submit" /></div></noscript>
 	</form>	
@@ -882,8 +911,8 @@ function render_wpfc_sermon_single() {
 					wpfc_sermon_date('l, F j, Y', '<span class="sermon_date">', '</span> '); wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> ');
 			?></p><p><?php
 					wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
-					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ' ', '</span>');
-					echo the_terms( $post->ID, 'wpfc_sermon_series', '<p><span class="sermon_series">Series: ', ' ', '</span></p>' ); 
+					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ', ', '</span>');
+					echo the_terms( $post->ID, 'wpfc_sermon_series', '<p><span class="sermon_series">Series: ', ', ', '</span></p>' ); 
 				?>
 			</p>
 		</div>
@@ -914,8 +943,8 @@ function render_wpfc_sermon_excerpt() {
 					wpfc_sermon_date('l, F j, Y', '<span class="sermon_date">', '</span> '); wpfc_sermon_meta('service_type', ' <span class="service_type">(', ')</span> ');
 			?></p><p><?php
 					wpfc_sermon_meta('bible_passage', '<span class="bible_passage">Bible Text: ', '</span> | ');
-					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ' ', '</span>');
-					echo the_terms( $post->ID, 'wpfc_sermon_series', '<p><span class="sermon_series">Series: ', ' ', '</span></p>' ); 
+					echo the_terms( $post->ID, 'wpfc_preacher',  '<span class="preacher_name">', ', ', '</span>');
+					echo the_terms( $post->ID, 'wpfc_sermon_series', '<p><span class="sermon_series">Series: ', ', ', '</span></p>' ); 
 				?>
 			</p>
 		</div>
