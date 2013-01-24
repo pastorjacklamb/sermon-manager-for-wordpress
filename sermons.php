@@ -958,7 +958,9 @@ function render_wpfc_sermon_excerpt() {
 }
 
 // Add sermon content
-add_filter('the_content', 'add_wpfc_sermon_content');
+if ( 'wpfc_sermon' == get_post_type() ) {
+	add_filter('the_content', 'add_wpfc_sermon_content');
+}
 function add_wpfc_sermon_content($content) {
 	if ( 'wpfc_sermon' == get_post_type() ){
 		if ( is_archive() ) {
